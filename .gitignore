@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+extracted/
+traces/
+hf-cache/
+.agents/
+.kilo/
+.zcode/
+skills-lock.json
+*.egg-info/
