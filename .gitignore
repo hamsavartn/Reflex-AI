@@ -15,3 +15,7 @@ skills-lock.json
 fdb3/
 .venv-fdb/
 logs/
+*.pdf
+*.pptx
+*.docx
+Gen AI 3.0_Invite.png
