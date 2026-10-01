@@ -45,6 +45,7 @@ class Agent:
         # slow-path tasks by generation: the run loop must stay free to read
         # the input queue (a blocking slow path deadlocks on its own result)
         self._slow_tasks: list[tuple[int, asyncio.Task]] = []
+        self._last_options: list = []  # last search result, session-scoped
 
     def _now(self) -> int:
         return self.clock.now_ms if self.clock is not None else 0
@@ -104,44 +105,111 @@ class Agent:
     async def _slow_path_inner(self, event: TextChunk) -> None:
         text = event.text.strip()
         intent, slots = _stub_extract(text)
+
+        # localized slot correction: "actually to Mumbai" re-runs the search
+        if intent == "correct_destination" and self.state.intent == "flight_search":
+            self.state.set_slot("destination", slots["destination"])
+            intent = "flight_search"
+            slots["destination"] = self.state.slots["destination"]
+
         self.state.set_intent(intent)
         for k, v in slots.items():
             self.state.set_slot(k, v)
 
         if intent == "flight_search":
-            args = {"destination": slots.get("destination", "GOA")}
-            try:
-                result = await self.executor.call("flight_search", args, generation=self.state.generation)
-            except DuplicateStateCall:
-                cached = self.executor.cached_result("flight_search", args)
-                if cached is None:
-                    await self._emit(Filler(text="Still working on that search.", kind="progress"))
-                    return
-                result = cached
-            options = result.payload.get("options", []) if result.ok else []
-            if not result.ok:
-                await self._emit(
-                    FinalResponse(
-                        text="The search failed — sorry about that.",
-                        snapshot=self.state.snapshot(event.turn_id).model_dump(),
-                    )
-                )
-                return
-            first = options[0] if options else {}
+            await self._do_flight_search(event)
+        elif intent == "book_flight":
+            await self._do_book_flight(event)
+        elif intent == "unknown_tool":
+            # manifest lacks the tool the user asked for -> clarify, never guess
             await self._emit(
                 FinalResponse(
-                    text=f"Cheapest to {args['destination']}: {first.get('airline', '?')} at "
-                    f"{first.get('departure', '?')} for ₹{first.get('price', '?')}.",
+                    text="I don't have that capability in this session — I can search and book flights. Want me to do that?",
                     snapshot=self.state.snapshot(event.turn_id).model_dump(),
                 )
             )
         else:
             await self._emit(
                 FinalResponse(
-                    text="I can help search flights right now — what would you like to do?",
+                    text="I can help search and book flights right now — what would you like to do?",
                     snapshot=self.state.snapshot(event.turn_id).model_dump(),
                 )
             )
+
+    async def _do_flight_search(self, event: TextChunk) -> None:
+        args = {"destination": self.state.slots.get("destination", "GOA")}
+        cached = self.executor.cached_result("flight_search", args)
+        if cached is not None:
+            result = cached
+        else:
+            try:
+                result = await self.executor.call("flight_search", args, generation=self.state.generation)
+            except DuplicateStateCall:
+                await self._emit(Filler(text="Still working on that search.", kind="progress"))
+                return
+        if not result.ok:
+            await self._emit(
+                FinalResponse(
+                    text="The search failed — sorry about that.",
+                    snapshot=self.state.snapshot(event.turn_id).model_dump(),
+                )
+            )
+            return
+        options = result.payload.get("options", [])
+        self._last_options = options  # session-scoped context for the booking chain
+        self.state.set_slot("last_destination", args["destination"])
+        first = options[0] if options else {}
+        await self._emit(
+            FinalResponse(
+                text=f"Cheapest to {args['destination']}: {first.get('airline', '?')} at "
+                f"{first.get('departure', '?')} for ₹{first.get('price', '?')}.",
+                snapshot=self.state.snapshot(event.turn_id).model_dump(),
+            )
+        )
+
+    async def _do_book_flight(self, event: TextChunk) -> None:
+        # chained call: resolve flight from the session's last search result
+        options = getattr(self, "_last_options", [])
+        if not options:
+            await self._emit(
+                FinalResponse(
+                    text="Let me find a flight first — where are you flying to?",
+                    snapshot=self.state.snapshot(event.turn_id).model_dump(),
+                )
+            )
+            return
+        flight_id = options[0].get("flight_id", "F001")
+        self.state.set_slot("flight_id", flight_id)
+        args = {"flight_id": flight_id}
+        try:
+            result = await self.executor.call("book_flight", args, generation=self.state.generation)
+        except DuplicateStateCall:
+            # the exact same booking is in flight or done: reuse, never double-book
+            cached = self.executor.cached_result("book_flight", args)
+            if cached is None:
+                await self._emit(
+                    FinalResponse(
+                        text="That booking is already being processed — one moment.",
+                        snapshot=self.state.snapshot(event.turn_id).model_dump(),
+                    )
+                )
+                return
+            result = cached
+        if not result.ok:
+            await self._emit(
+                FinalResponse(
+                    text="The booking failed — I have not charged anything. Want me to retry?",
+                    snapshot=self.state.snapshot(event.turn_id).model_dump(),
+                )
+            )
+            return
+        self.state.set_slot("booking_id", result.payload.get("booking_id"))
+        await self._emit(
+            FinalResponse(
+                text=f"Booked on {flight_id} — confirmation {result.payload.get('booking_id')}.",
+                snapshot=self.state.snapshot(event.turn_id).model_dump(),
+            )
+        )
 
     # ------------------------------------------------------------ interruption
 
@@ -168,6 +236,14 @@ class Agent:
 
 def _stub_extract(text: str) -> tuple[str, dict]:
     low = text.lower()
+    if "hotel" in low or "cab" in low or "train" in low:
+        return "unknown_tool", {}
+    if low.startswith("actually") or "instead" in low:
+        m = re.search(r"\bto\s+([a-z][a-z ]{2,20})", low)
+        if m:
+            return "correct_destination", {"destination": m.group(1).strip().title()}
+    if "book" in low:
+        return "book_flight", {}
     if "flight" in low or "fly" in low:
         m = re.search(r"\bto\s+([a-z][a-z ]{2,20})", low)
         dest = m.group(1).strip() if m else "GOA"

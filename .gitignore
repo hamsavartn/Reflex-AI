@@ -10,3 +10,8 @@ hf-cache/
 .zcode/
 skills-lock.json
 *.egg-info/
+.env
+.env.local
+fdb3/
+.venv-fdb/
+logs/
