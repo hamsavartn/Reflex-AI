@@ -1,0 +1,8 @@
+*.zip
+fdb_v3_data_released/
+fdb_v3_data_test/
+logs/
+__pycache__/
+__MACOSX/
+*.log
+.env.local

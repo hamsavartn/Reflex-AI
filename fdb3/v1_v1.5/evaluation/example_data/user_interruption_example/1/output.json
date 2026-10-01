@@ -1,0 +1,229 @@
+{
+    "text": " One, To Kill a Mockingbird by Harper Lee, this classic novel explores themes of racial installs and moral growth through the eyes of a young girl in the American South. Two, Manteen.",
+    "chunks": [
+        {
+            "text": "One,",
+            "timestamp": [
+                17.224,
+                17.704
+            ]
+        },
+        {
+            "text": "To",
+            "timestamp": [
+                17.904,
+                18.104
+            ]
+        },
+        {
+            "text": "Kill",
+            "timestamp": [
+                18.104,
+                18.364
+            ]
+        },
+        {
+            "text": "a",
+            "timestamp": [
+                18.364,
+                18.474
+            ]
+        },
+        {
+            "text": "Mockingbird",
+            "timestamp": [
+                18.474,
+                19.064
+            ]
+        },
+        {
+            "text": "by",
+            "timestamp": [
+                19.064,
+                19.224
+            ]
+        },
+        {
+            "text": "Harper",
+            "timestamp": [
+                19.224,
+                19.524
+            ]
+        },
+        {
+            "text": "Lee,",
+            "timestamp": [
+                19.524,
+                19.844
+            ]
+        },
+        {
+            "text": "this",
+            "timestamp": [
+                20.064,
+                20.364
+            ]
+        },
+        {
+            "text": "classic",
+            "timestamp": [
+                20.364,
+                20.823999999999998
+            ]
+        },
+        {
+            "text": "novel",
+            "timestamp": [
+                20.823999999999998,
+                21.194000000000003
+            ]
+        },
+        {
+            "text": "explores",
+            "timestamp": [
+                21.194000000000003,
+                21.764000000000003
+            ]
+        },
+        {
+            "text": "themes",
+            "timestamp": [
+                21.764000000000003,
+                22.124000000000002
+            ]
+        },
+        {
+            "text": "of",
+            "timestamp": [
+                22.124000000000002,
+                22.244
+            ]
+        },
+        {
+            "text": "racial",
+            "timestamp": [
+                22.244,
+                22.584000000000003
+            ]
+        },
+        {
+            "text": "installs",
+            "timestamp": [
+                22.584000000000003,
+                23.104
+            ]
+        },
+        {
+            "text": "and",
+            "timestamp": [
+                23.104,
+                23.244
+            ]
+        },
+        {
+            "text": "moral",
+            "timestamp": [
+                23.244,
+                23.543999999999997
+            ]
+        },
+        {
+            "text": "growth",
+            "timestamp": [
+                23.543999999999997,
+                23.904000000000003
+            ]
+        },
+        {
+            "text": "through",
+            "timestamp": [
+                23.904000000000003,
+                24.094
+            ]
+        },
+        {
+            "text": "the",
+            "timestamp": [
+                24.094,
+                24.244
+            ]
+        },
+        {
+            "text": "eyes",
+            "timestamp": [
+                24.244,
+                24.514000000000003
+            ]
+        },
+        {
+            "text": "of",
+            "timestamp": [
+                24.514000000000003,
+                24.604
+            ]
+        },
+        {
+            "text": "a",
+            "timestamp": [
+                24.604,
+                24.694000000000003
+            ]
+        },
+        {
+            "text": "young",
+            "timestamp": [
+                24.694000000000003,
+                24.924
+            ]
+        },
+        {
+            "text": "girl",
+            "timestamp": [
+                24.924,
+                25.194000000000003
+            ]
+        },
+        {
+            "text": "in",
+            "timestamp": [
+                25.194000000000003,
+                25.304000000000002
+            ]
+        },
+        {
+            "text": "the",
+            "timestamp": [
+                25.304000000000002,
+                25.433999999999997
+            ]
+        },
+        {
+            "text": "American",
+            "timestamp": [
+                25.433999999999997,
+                25.904
+            ]
+        },
+        {
+            "text": "South.",
+            "timestamp": [
+                25.904,
+                26.364
+            ]
+        },
+        {
+            "text": "Two,",
+            "timestamp": [
+                26.964,
+                27.404
+            ]
+        },
+        {
+            "text": "Manteen.",
+            "timestamp": [
+                27.683999999999997,
+                28.124000000000002
+            ]
+        }
+    ]
+}
