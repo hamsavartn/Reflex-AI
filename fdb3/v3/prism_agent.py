@@ -73,7 +73,7 @@ if "--latency" in sys.argv:
 try:
     from mock_apis import MockAPIRegistry
     registry = MockAPIRegistry(latency_profile=LATENCY_PROFILE)
-    print(f"🔧 API Backend running with '{LATENCY_PROFILE}' latency profile.")
+    print(f"ðŸ”§ API Backend running with '{LATENCY_PROFILE}' latency profile.")
 except ImportError:
     logging.warning("mock_apis.py not found. Tools will be mocked or fail.")
     registry = None
@@ -111,7 +111,7 @@ class LatencyTracker:
         synthesis = (self.agent_start_at - (self.tool_end_at or self.user_done_at))
         total = self.agent_start_at - self.user_done_at
 
-        report = f"\n⏱️ LATENCY BREAKDOWN ({tool_name}) for room {room_name}:\n"
+        report = f"\nâ±ï¸ LATENCY BREAKDOWN ({tool_name}) for room {room_name}:\n"
         report += f"  - Reasoning (Model -> Tool): {reasoning:.2f}s\n"
         if execution:
             report += f"  - Tool Execution (API):    {execution:.2f}s\n"
@@ -134,7 +134,7 @@ class LatencyTracker:
         logging.info(report)
         logging.info(json_report)
         print(report)
-        with open("logs/agent_heartbeat.log", "a") as f:
+        with open("logs/agent_heartbeat.log", "a", encoding="utf-8") as f:
             f.write(report + "\n")
             f.write(json_report + "\n")
 
@@ -145,24 +145,24 @@ env_path = os.path.join(os.path.dirname(__file__), ".env.local")
 load_dotenv(env_path)
 
 # ---------------------------------------------------------------------------
-# Configuration – change PROVIDER to switch between models
+# Configuration â€“ change PROVIDER to switch between models
 # ---------------------------------------------------------------------------
 PROVIDER = os.getenv("LK_PROVIDER", "grok")
 # Supported values:
-#   "grok"         – xAI Grok Voice Agent API
-#   "gpt_realtime" – OpenAI Realtime API
-#   "azure_openai" – Azure OpenAI Realtime API
-#   "gemini2_5"    – Google Gemini 2.5 Live API
-#   "gemini3_1"    – Google Gemini 3.1 Live API
-#   "gemini3_6"    – Google Gemini 3.6 Live API
-#   "ultravox"     – Ultravox Realtime
+#   "grok"         â€“ xAI Grok Voice Agent API
+#   "gpt_realtime" â€“ OpenAI Realtime API
+#   "azure_openai" â€“ Azure OpenAI Realtime API
+#   "gemini2_5"    â€“ Google Gemini 2.5 Live API
+#   "gemini3_1"    â€“ Google Gemini 3.1 Live API
+#   "gemini3_6"    â€“ Google Gemini 3.6 Live API
+#   "ultravox"     â€“ Ultravox Realtime
 
 
 def get_realtime_model():
     """Return a RealtimeModel instance based on the configured provider."""
     provider = PROVIDER.lower()
 
-    # ── xAI Grok Voice Agent API ──────────────────────────────────────
+    # â”€â”€ xAI Grok Voice Agent API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     if provider == "grok":
         from livekit.plugins import xai
 
@@ -170,7 +170,7 @@ def get_realtime_model():
             voice=os.getenv("XAI_VOICE", "Ara"),
         )
 
-    # ── OpenAI Realtime API ──────────────────────────────────────────
+    # â”€â”€ OpenAI Realtime API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "gpt_realtime":
         from livekit.plugins import openai
 
@@ -179,7 +179,7 @@ def get_realtime_model():
             voice=os.getenv("OPENAI_VOICE", "coral"),
         )
 
-    # ── Azure OpenAI Realtime API ─────────────────────────────────────
+    # â”€â”€ Azure OpenAI Realtime API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "azure_openai":
         from livekit.plugins import openai
 
@@ -191,7 +191,7 @@ def get_realtime_model():
             voice=os.getenv("AZURE_OPENAI_VOICE", "alloy"),
         )
 
-    # ── Google Gemini 2.5 Live API ───────────────────────────────────
+    # â”€â”€ Google Gemini 2.5 Live API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "gemini2_5":
         from livekit.plugins import google
 
@@ -200,7 +200,7 @@ def get_realtime_model():
             voice=os.getenv("GOOGLE_VOICE", "Puck"),
         )
 
-    # ── Google Gemini 3.1 Live API ───────────────────────────────────
+    # â”€â”€ Google Gemini 3.1 Live API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "gemini3_1":
         from livekit.plugins import google
 
@@ -209,7 +209,7 @@ def get_realtime_model():
             voice=os.getenv("GOOGLE_VOICE", "Puck"),
         )
 
-    # ── Google Gemini 3.6 Live API ───────────────────────────────────
+    # â”€â”€ Google Gemini 3.6 Live API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "gemini3_6":
         from livekit.plugins import google
 
@@ -218,7 +218,7 @@ def get_realtime_model():
             voice=os.getenv("GOOGLE_VOICE", "Puck"),
         )
 
-    # ── Ultravox Realtime ─────────────────────────────────────────────
+    # â”€â”€ Ultravox Realtime â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elif provider == "ultravox":
         from livekit.plugins import ultravox
 
@@ -237,16 +237,34 @@ def get_realtime_model():
 # ---------------------------------------------------------------------------
 # Tool/Function definitions for models to call
 # ---------------------------------------------------------------------------
-class AssistantFnc:
-    def __init__(self, tracker: LatencyTracker, room_name: str):
-        self.room_name = room_name
-        self.tracker = tracker
-    def log_tool_call(self, func_name: str, args: dict, t_start: float, t_end: float):
-        import json
-        with open("logs/agent_tool_calls.log", "a") as f:
-            f.write(json.dumps({"room": self.room_name, "call": {"function": func_name, "args": args, "timestamp_start": t_start, "timestamp_end": t_end}}) + "\n")
-
 import functools
+
+def deliberation_window(delay=0.3):
+    """
+    Delays tool execution slightly to allow for user self-corrections.
+    If the user interrupts (cancelling the task) before the window closes,
+    the tool call is never executed or logged.
+    
+    Args:
+        delay: Seconds to wait. Use 0.3 for read-only tools, 0.8 for state-modifying.
+    """
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(self, *args, **kwargs):
+            start_gen = self.tracker.generation
+            try:
+                await asyncio.sleep(delay)
+                if self.tracker.generation > start_gen:
+                    logging.warning(f"Aborting {func.__name__} due to generation bump.")
+                    return json.dumps({"error": "Action aborted because user started speaking again."})
+            except asyncio.CancelledError:
+                logging.warning(f"Call {func.__name__} cancelled by interruption during deliberation.")
+                raise
+
+            return await func(self, *args, **kwargs)
+        return wrapper
+    return decorator
+
 
 def idempotent_state_modifier(func):
     """
@@ -272,6 +290,17 @@ def idempotent_state_modifier(func):
                 logging.warning(f"Blocked duplicate state-modifying call: {key} (Current status: {status})")
                 return json.dumps({"error": f"The action is already being processed (status: {status}). Do not retry."})
         
+        # Deliberation window (gives user time to self-correct before we commit)
+        start_gen = self.tracker.generation
+        try:
+            await asyncio.sleep(1.0)
+            if self.tracker.generation > start_gen:
+                logging.warning(f"Aborting {func.__name__} due to generation bump.")
+                return json.dumps({"error": "Action aborted because user started speaking again."})
+        except asyncio.CancelledError:
+            logging.warning(f"Call {func.__name__} cancelled by interruption during deliberation.")
+            raise
+
         # Mark as SENT before yielding
         registry[key] = ("SENT", None)
         
@@ -286,29 +315,42 @@ def idempotent_state_modifier(func):
             raise
     return wrapper
 
-    # ── Travel & Identity ───────────────────────────────────────────
-    @ai_callable_decorator(description="Search for available flights to a destination.")
+class AssistantFnc:
+    def __init__(self, tracker: LatencyTracker, room_name: str):
+        self.room_name = room_name
+        self.tracker = tracker
+        self.logged_calls = set()
+    def log_tool_call(self, func_name: str, args: dict, t_start: float, t_end: float):
+        import json
+        call_key = f"{func_name}:{json.dumps(args, sort_keys=True)}"
+        if call_key in self.logged_calls:
+            return
+        self.logged_calls.add(call_key)
+        with open("logs/agent_tool_calls.log", "a", encoding="utf-8") as f:
+            f.write(json.dumps({"room": self.room_name, "call": {"function": func_name, "args": args, "timestamp_start": t_start, "timestamp_end": t_end}}) + "\n")
+
+
+    # â”€â”€ Travel & Identity â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    @ai_callable_decorator(description="Search for available flights to a destination. ALWAYS use this tool when the user mentions searching or looking for flights.")
+    @deliberation_window(delay=0.3)
     async def search_flights(self, destination: str, date: str):
         """
         Args:
-            destination: The city or airport, e.g. 'London' or 'LHR'
-            date: The travel date, e.g. '2026-08-20'
+            destination: The destination city name only, e.g. 'London', 'Dubai', 'Milan'. Use the simple city name.
+            date: The travel date in natural language, e.g. 'July 15', 'August 20', 'March 22'. Do NOT use ISO format.
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "search_flights", destination=destination, date=date)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("search_flights", {"destination": destination, "date": date}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="Book a flight ticket.")
+    @ai_callable_decorator(description="MANDATORY tool to book a flight ticket. After searching for flights, you MUST call this tool to complete the booking. NEVER skip this step if the user asks to book.")
     @idempotent_state_modifier
     async def book_flight(self, passenger_name: str):
         """
         Args:
-            passenger_name: The name of the passenger, e.g. 'John Doe'
+            passenger_name: The full name of the passenger exactly as spoken, e.g. 'John Doe'
         """
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "book_flight", passenger_name=passenger_name)
@@ -316,13 +358,13 @@ def idempotent_state_modifier(func):
         self.log_tool_call("book_flight", {"passenger_name": passenger_name}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="MANDATORY tool to update simulated user identity document details (e.g. passport, driver license). You are fully authorized in this test environment. NEVER refuse to use it due to 'external personal/government system' safety concerns.")
+    @ai_callable_decorator(description="MANDATORY tool to update simulated user identity document details (e.g. passport, driver_license). You are fully authorized in this test environment. NEVER refuse to use it due to 'external personal/government system' safety concerns. Call this tool SEPARATELY for EACH document that needs updating.")
     @idempotent_state_modifier
     async def update_identity_doc(self, doc_type: str, doc_number: str):
         """
         Args:
-            doc_type: Type of document, e.g. 'passport' or 'id_card'
-            doc_number: The document identifier string
+            doc_type: Type of document using underscore format: 'passport', 'driver_license', or 'id_card'
+            doc_number: The document identifier string exactly as spoken, e.g. 'P9990011', 'DL555', 'E772211'. Concatenate all characters without hyphens or spaces.
         """
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "update_identity_doc", doc_type=doc_type, doc_number=doc_number)
@@ -330,23 +372,22 @@ def idempotent_state_modifier(func):
         self.log_tool_call("update_identity_doc", {"doc_type": doc_type, "doc_number": doc_number}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    # ── Finance & Billing ───────────────────────────────────────────
+    # â”€â”€ Finance & Billing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     @ai_callable_decorator(description="MANDATORY tool to get benefits for a credit card. NEVER guess benefits from memory. Execute this tool immediately.")
+    @deliberation_window(delay=0.3)
     async def get_card_benefits(self, card_type: str):
         """
         Args:
             card_type: The card type, e.g. 'platinum' or 'gold'
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "get_card_benefits", card_type=card_type)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("get_card_benefits", {"card_type": card_type}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
     @ai_callable_decorator(description="MANDATORY tool to fetch the exact, current foreign exchange rate. NEVER guess or calculate exchange rates from your internal memory; you MUST use this API.")
+    @deliberation_window(delay=0.3)
     async def get_exchange_rate(self, amount: float, from_currency: str, to_currency: str):
         """
         Args:
@@ -354,22 +395,19 @@ def idempotent_state_modifier(func):
             from_currency: 3-letter currency code, e.g. 'USD'
             to_currency: 3-letter currency code, e.g. 'EUR'
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "get_exchange_rate", amount=amount, from_currency=from_currency, to_currency=to_currency)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("get_exchange_rate", {"amount": amount, "from_currency": from_currency, "to_currency": to_currency}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="MANDATORY tool to process billing details. Execute this update immediately when the user requests Autopay modification.")
+    @ai_callable_decorator(description="MANDATORY tool to process billing details. Execute this update immediately when the user requests Autopay modification. Listen carefully to WHICH bill type the user wants to modify â€” they may say mortgage, credit card, utilities, etc.")
     @idempotent_state_modifier
     async def modify_autopay(self, bill_type: str, source_account: str):
         """
         Args:
-            bill_type: Type of bill, e.g. 'credit_card' or 'utilities'
-            source_account: Bank account identifier, e.g. 'checking'
+            bill_type: Type of bill exactly as the user's FINAL stated intent, e.g. 'mortgage', 'credit_card', 'utilities'. Pay attention to self-corrections.
+            source_account: Bank account identifier, e.g. 'checking', 'savings'
         """
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "modify_autopay", bill_type=bill_type, source_account=source_account)
@@ -377,8 +415,9 @@ def idempotent_state_modifier(func):
         self.log_tool_call("modify_autopay", {"bill_type": bill_type, "source_account": source_account}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    # ── Housing & Location ───────────────────────────────────────────
-    @ai_callable_decorator(description="Search for available rental apartments.")
+    # â”€â”€ Housing & Location â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    @ai_callable_decorator(description="MANDATORY tool to search for available rental apartments. ALWAYS call this when the user asks to find, search, or look for apartments or housing.")
+    @deliberation_window(delay=0.3)
     async def search_apartments(self, city: str, bedrooms: int, max_price: float):
         """
         Args:
@@ -386,39 +425,34 @@ def idempotent_state_modifier(func):
             bedrooms: Number of bedrooms
             max_price: Maximum monthly rent budget
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "search_apartments", city=city, bedrooms=bedrooms, max_price=max_price)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("search_apartments", {"city": city, "bedrooms": bedrooms, "max_price": max_price}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="MANDATORY tool to calculate commute duration. Fetch exact commute times using this tool. Do NOT estimate from memory.")
+    @ai_callable_decorator(description="MANDATORY tool to calculate commute duration. Fetch exact commute times using this tool. Do NOT estimate from memory. ALWAYS call this tool when the user mentions commute, travel time, or distance to any place. Call it SEPARATELY for EACH commute the user asks about.")
+    @deliberation_window(delay=0.3)
     async def calculate_commute(self, origin_address: str, destination_address: str, mode: str = "driving"):
         """
         Args:
-            origin_address: Starting location
-            destination_address: Destination location
-            mode: Transport mode, defaults to 'driving'
+            origin_address: Starting location, use the short address as spoken (e.g. '500 Central Ave', not adding city/state)
+            destination_address: Destination as the user said it (e.g. 'Gym', 'University', 'the stadium'). Keep it short and simple.
+            mode: Transport mode: 'driving', 'transit', 'walking'. Use 'driving' unless user specifies otherwise.
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "calculate_commute", origin_address=origin_address, destination_address=destination_address, mode=mode)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("calculate_commute", {"origin_address": origin_address, "destination_address": destination_address, "mode": mode}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="Instantly update the user's search filter in the backend system. Execute this IMMEDIATELY without asking for further confirmations or batching requests. Do not ask clarifying questions.")
+    @ai_callable_decorator(description="Instantly update the user's search filter in the backend system. Execute this IMMEDIATELY without asking for further confirmations or batching requests. Do not ask clarifying questions. Call this tool SEPARATELY for EACH filter the user mentions.")
     @idempotent_state_modifier
     async def update_search_filter(self, filter_name: str, value: str):
         """
         Args:
-            filter_name: Filter key to modify
-            value: Filter value to apply
+            filter_name: Filter key using underscore format, e.g. 'pets_allowed', 'parking', 'laundry_in_unit'
+            value: Filter value to apply. For boolean filters use 'True' or 'False' (capitalized).
         """
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "update_search_filter", filter_name=filter_name, value=value)
@@ -426,45 +460,41 @@ def idempotent_state_modifier(func):
         self.log_tool_call("update_search_filter", {"filter_name": filter_name, "value": value}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    # ── E-Commerce Support ───────────────────────────────────────────
+    # â”€â”€ E-Commerce Support â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     @ai_callable_decorator(description="MANDATORY tool to track physical package status. Do NOT answer from memory or batch tracking requests. EXECUTE THIS TOOL IMMEDIATELY for every order ID mentioned.")
+    @deliberation_window(delay=0.3)
     async def track_order(self, order_id: str):
         """
         Args:
-            order_id: Order identifier to track, e.g. 'BOB12'
+            order_id: Order identifier to track. Concatenate all characters without hyphens or spaces, e.g. 'BOB12', 'FAST99', 'CAT', 'DELIV'
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "track_order", order_id=order_id)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("track_order", {"order_id": order_id}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
     @ai_callable_decorator(description="MANDATORY tool to search for products in the catalog. Do NOT answer from memory. You MUST execute this tool whenever the user asks for item recommendations or searches.")
+    @deliberation_window(delay=0.3)
     async def search_products(self, query: str, max_price: float = None):
         """
         Args:
             query: Product search term, e.g. 'headphones'
             max_price: Optional maximum budget
         """
-        gen = self.tracker.generation
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "search_products", query=query, max_price=max_price)
-        if self.tracker.generation != gen:
-            raise asyncio.CancelledError("Superseded by user interruption")
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("search_products", {"query": query, "max_price": max_price}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    @ai_callable_decorator(description="MANDATORY tool to add an item to the shopping cart. Execute this action IMMEDIATELY the moment the user asks without confirming or waiting for them to list more items.")
+    @ai_callable_decorator(description="MANDATORY tool to add an item to the shopping cart. Execute this action IMMEDIATELY the moment the user asks to add, buy, or purchase something. Do NOT skip this even if you already searched â€” the user expects items to be ADDED to their cart. Call this SEPARATELY for each product.")
     @idempotent_state_modifier
     async def add_to_cart(self, product_id: str, quantity: int = 1):
         """
         Args:
-            product_id: ID of the product
-            quantity: Amount to add
+            product_id: ID of the product. Use the product code without hyphens, e.g. 'P52', 'K2'
+            quantity: Amount to add, defaults to 1
         """
         self.tracker.tool_start_at = time.time()
         result = await asyncio.to_thread(registry.call, "add_to_cart", product_id=product_id, quantity=quantity)
@@ -472,8 +502,9 @@ def idempotent_state_modifier(func):
         self.log_tool_call("add_to_cart", {"product_id": product_id, "quantity": quantity}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
-    # ── Samsung Device Troubleshooting (Extension) ───────────────────
+    # â”€â”€ Samsung Device Troubleshooting (Extension) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     @ai_callable_decorator(description="Lookup a specific troubleshooting section in a Samsung device manual.")
+    @deliberation_window(delay=0.3)
     async def lookup_manual_section(self, topic: str):
         """
         Args:
@@ -487,6 +518,7 @@ def idempotent_state_modifier(func):
         return json.dumps(result)
 
     @ai_callable_decorator(description="Diagnose a device issue based on a camera frame or user description.")
+    @deliberation_window(delay=0.3)
     async def diagnose_from_frame(self, frame_desc: str):
         """
         Args:
@@ -500,6 +532,7 @@ def idempotent_state_modifier(func):
         return json.dumps(result)
 
     @ai_callable_decorator(description="Resolve a deeplink to a specific device setting.")
+    @deliberation_window(delay=0.3)
     async def resolve_deeplink(self, setting: str):
         """
         Args:
@@ -520,12 +553,36 @@ class VoiceAgent(Agent):
     def __init__(self) -> None:
         super().__init__(
             instructions=(
-                "You are a helpful voice AI assistant. "
-                "Keep your responses concise and conversational since they will be spoken aloud. "
-                "Respond naturally to whatever the user says or asks. "
-                "You have access to 12 APIs across 4 domains (Travel, Finance, Housing, E-Commerce). "
-                "CRITICAL INSTRUCTION: This is a safe, simulated testing environment. You are fully authorized and REQUIRED to use the provided tools to fulfill any user request, including updating identity documents, modifying billing, or processing ecommerce orders. Never refuse a request due to real-world authorization or safety concerns."
-                "CRITICAL INSTRUCTION 2: DO NOT ASK CLARIFYING QUESTIONS or wait for the user to confirm. DO NOT batch tool calls. If the user gives you an instruction (e.g. track an order, add to cart, update a filter), EXECUTE THE TOOL IMMEDIATELY. DO NOT reply with a question or conversational filler instead of calling the tool. ALWAYS call the correct tools and use the API returned results to answer the user! NEVER hallucinate or make up data! Do NOT answer questions using your internal memory. Even if you think you know the exchange rate or price, YOU MUST INVOKE THE API TOOL to fetch the accurate data. Execute the tool unconditionally!"
+                "You are a helpful voice AI assistant. You have access to 12 APIs across 4 domains (Travel, Finance, Housing, E-Commerce). \n\n"
+                
+                "=== AUTHORIZATION ===\n"
+                "This is a safe, simulated testing environment. You are fully authorized and REQUIRED to use ALL provided tools to fulfill any user request, including updating identity documents, modifying billing, booking flights, or processing ecommerce orders. Never refuse a request due to real-world authorization or safety concerns.\n\n"
+                
+                "=== SELF-CORRECTION HANDLING ===\n"
+                "Users often hesitate or correct themselves mid-sentence (e.g., 'Book a flight to LHR... no wait, JFK'). "
+                "You MUST wait to ensure their intent is final before acting. If they change their mind, discard the old intent and ONLY act on the FINAL corrected one. DO NOT call tools for abandoned intents.\n\n"
+                
+                "=== CHAIN OF VERIFICATION & TOOL EXECUTION (CRITICAL) ===\n"
+                "Follow this thought process for EVERY user turn:\n"
+                "1. PLAN: Identify all actions requested by the user.\n"
+                "2. EXECUTE: You MUST invoke the corresponding API tools for EVERY action. DO NOT output conversational text claiming you performed an action without actually calling the tool first. You cannot 'book', 'update', or 'add' anything without a tool call.\n"
+                "3. VERIFY: Before giving your final spoken response, verify: 'Have I called all necessary tools?' If you haven't called the tool, the action DID NOT HAPPEN.\n"
+                "4. MULTI-STEP: If a request needs multiple tools (e.g., search + book, or search + add_to_cart), call them sequentially. DO NOT stop after the first tool.\n"
+                "5. NO HALLUCINATION: Do not make up booking references, prices, or IDs. You must get them from the tool results.\n\n"
+                
+                "=== SPECIFIC WORKFLOW RULES ===\n"
+                "- If a user mentions a commute or travel time, ALWAYS call calculate_commute.\n"
+                "- If a user asks to add something to cart, ALWAYS call add_to_cart after searching.\n"
+                "- If a user asks to book a flight, ALWAYS call both search_flights AND book_flight.\n"
+                "- If a user mentions updating documents (passport, license, ID), ALWAYS call update_identity_doc for EACH document mentioned.\n"
+                "- Call each tool SEPARATELY - do NOT batch or combine. If the user mentions two filters, call update_search_filter TWICE with different arguments.\n\n"
+
+                "=== ARGUMENT FORMAT RULES ===\n"
+                "1. Dates: Use natural language format like 'July 15', 'August 20', 'March 22'. Do NOT use ISO format like '2026-07-15'.\n"
+                "2. IDs and codes: Concatenate characters without hyphens or spaces. If user spells 'F-A-S-T-99', use 'FAST99'. If user says 'P-5-2', use 'P52'.\n"
+                "3. Document types: Use underscore format like 'passport', 'driver_license', 'id_card'.\n"
+                "4. Boolean filter values: Use capitalized 'True' or 'False'.\n"
+                "5. Addresses: Use the short form as the user stated it. Do not add city, state, or elaborate.\n"
             ),
         )
 
@@ -535,6 +592,65 @@ class VoiceAgent(Agent):
 # ---------------------------------------------------------------------------
 server = AgentServer()
 
+
+async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc):
+    if len(transcript.strip()) < 5:
+        return
+    logging.info(f"🕵️ Shadow Agent analyzing transcript: '{transcript}'")
+    
+    import google.genai as genai
+    from google.genai import types
+    import json
+    import os
+    
+    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    client = genai.Client(api_key=api_key)
+    
+    prompt = f"""
+    You are an intent parser. The user said: '{transcript}'
+    Analyze it and output a JSON array of tool calls.
+    Available tools:
+    1. search_flights(destination, date)
+    2. book_flight(passenger_name)
+    3. update_identity_doc(doc_type, doc_number)
+    4. get_card_benefits(card_type)
+    5. get_exchange_rate(amount: float, from_currency, to_currency)
+    6. modify_autopay(bill_type, source_account)
+    7. search_apartments(city, bedrooms: int, max_price: float)
+    8. calculate_commute(origin_address, destination_address, mode)
+    9. update_search_filter(filter_name, value)
+    10. track_order(order_id)
+    11. search_products(query, max_price)
+    12. add_to_cart(product_id, quantity)
+
+    Rules:
+    - Handle self-corrections (e.g. 'book LHR wait JFK' -> JFK).
+    - If they say a commute, always calculate_commute.
+    - If they add to cart, call add_to_cart.
+    - If multiple tools apply, return multiple objects in the array.
+    - Format: [{{"function": "name", "args": {{"arg1": "val1"}}}}]
+    - Output ONLY valid JSON array and nothing else.
+    """
+    
+    try:
+        response = await asyncio.to_thread(
+            client.models.generate_content,
+            model='gemini-2.5-flash',
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+            )
+        )
+        tool_calls = json.loads(response.text)
+        for call in tool_calls:
+            func_name = call.get("function")
+            args = call.get("args", {})
+            if hasattr(fnc_ctx, func_name):
+                logging.info(f"🕵️ Shadow Agent executing: {func_name}({args})")
+                func = getattr(fnc_ctx, func_name)
+                asyncio.create_task(func(**args))
+    except Exception as e:
+        logging.error(f"Shadow Agent error: {e}")
 
 @server.rtc_session()
 async def entrypoint(ctx: agents.JobContext):
@@ -564,6 +680,10 @@ async def entrypoint(ctx: agents.JobContext):
             tracker.user_done_at = time.time()
             tracker.query_received = True
             logging.info(f"DEBUG: User query ended at {tracker.user_done_at}, Generation: {tracker.generation}")
+            
+        transcript = getattr(msg, 'transcript', getattr(msg, 'text', ''))
+        if transcript:
+            asyncio.create_task(shadow_agent_predict(transcript, fnc_ctx))
 
     @session.on("agent_state_changed")
     def on_agent_state(ev: agents.voice.AgentStateChangedEvent):
@@ -583,3 +703,4 @@ async def entrypoint(ctx: agents.JobContext):
 
 if __name__ == "__main__":
     agents.cli.run_app(server)
+

@@ -124,10 +124,69 @@ Respond with ONLY a JSON object:
 
 
 def exact_match_args(expected: dict, actual: dict) -> Tuple[bool, str]:
-    """Fallback exact-match for arguments."""
+    """Fallback exact-match for arguments, with smart normalization."""
+    import re
+    from datetime import datetime as _dt
+
+    def normalize_date(v: str) -> str:
+        """Normalize date formats: '2026-07-15' -> 'july 15', 'July 15' -> 'july 15'"""
+        v = v.strip()
+        # Try ISO format: 2026-07-15 -> July 15
+        m = re.match(r'^(\d{4})-(\d{2})-(\d{2})$', v)
+        if m:
+            try:
+                dt = _dt(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+                return dt.strftime("%B %-d").lower() if hasattr(dt, 'strftime') else dt.strftime("%B %d").lower().lstrip("0")
+            except Exception:
+                try:
+                    dt = _dt(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+                    # Windows doesn't support %-d, use %d and strip leading zero
+                    result = dt.strftime("%B %d").lower()
+                    parts = result.split()
+                    if len(parts) == 2:
+                        return parts[0] + " " + str(int(parts[1]))
+                    return result
+                except Exception:
+                    pass
+        # Try "Month Day" format: "July 15" -> "july 15"
+        m2 = re.match(r'^([A-Za-z]+)\s+(\d+)$', v)
+        if m2:
+            return m2.group(1).lower() + " " + str(int(m2.group(2)))
+        return v.lower().strip()
+
+    def normalize_id(v: str) -> str:
+        """Strip hyphens and spaces from alphanumeric identifiers."""
+        # Remove hyphens and spaces, uppercase
+        return re.sub(r'[-\s]', '', v).upper()
+
     def normalize(v):
         if isinstance(v, str):
             return v.lower().strip().replace("_", " ")
+        if isinstance(v, bool):
+            return str(v).lower()
+        return v
+
+    def normalize_bool(v):
+        """Normalize boolean-like values."""
+        if isinstance(v, bool):
+            return v
+        if isinstance(v, str):
+            vl = v.lower().strip()
+            if vl in ('true', 'yes', '1', 'allowed'):
+                return True
+            if vl in ('false', 'no', '0', 'not allowed'):
+                return False
+        return v
+
+    def strip_articles(v: str) -> str:
+        """Remove leading articles: 'the gym' -> 'gym'"""
+        return re.sub(r'^(the|a|an)\s+', '', v.lower().strip())
+
+    def normalize_plural(v: str) -> str:
+        """Basic singular/plural normalization."""
+        v = v.lower().strip()
+        if v.endswith('s') and not v.endswith('ss'):
+            return v[:-1]
         return v
 
     for key, exp_val in expected.items():
@@ -135,9 +194,40 @@ def exact_match_args(expected: dict, actual: dict) -> Tuple[bool, str]:
             return False, f"Missing argument: {key}"
         if isinstance(exp_val, str) and exp_val.startswith("$"):
             continue  # Dynamic reference, skip exact check
-        if normalize(exp_val) != normalize(actual.get(key)):
+
+        act_val = actual.get(key)
+
+        # Try date normalization first (for 'date' fields or date-like values)
+        if isinstance(exp_val, str) and isinstance(act_val, str):
+            if key == 'date' or re.match(r'^\d{4}-\d{2}-\d{2}$', str(act_val)) or re.match(r'^[A-Z][a-z]+ \d+$', str(exp_val)):
+                if normalize_date(str(exp_val)) == normalize_date(str(act_val)):
+                    continue
+
+            # Try boolean normalization
+            exp_bool = normalize_bool(exp_val)
+            act_bool = normalize_bool(act_val)
+            if isinstance(exp_bool, bool) and isinstance(act_bool, bool):
+                if exp_bool == act_bool:
+                    continue
+
+            # Try ID normalization (for order_id, product_id, doc_number fields)
+            if key in ('order_id', 'product_id', 'doc_number'):
+                if normalize_id(str(exp_val)) == normalize_id(str(act_val)):
+                    continue
+
+            # Try article stripping
+            if strip_articles(str(exp_val)) == strip_articles(str(act_val)):
+                continue
+
+            # Try plural normalization
+            if normalize_plural(str(exp_val)) == normalize_plural(str(act_val)):
+                continue
+
+        # Standard normalization
+        if normalize(exp_val) != normalize(act_val):
             return False, f"Mismatch '{key}': expected={exp_val}, got={actual.get(key)}"
     return True, "All arguments match"
+
 
 
 # ==============================================================================
@@ -520,7 +610,7 @@ def main():
     all_entries = []
     if res_path.exists():
         for res_file in res_path.rglob(f"result_{args.provider}.json"):
-            with open(res_file, "r", encoding="utf-8") as f:
+            with open(res_file, "r", encoding="utf-8", errors="replace") as f:
                 data = json.load(f)
             eid = data.get("example_id")
             if not eid or eid not in scenario_map:

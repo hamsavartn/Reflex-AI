@@ -1,0 +1,21 @@
+{
+  "benchmark_name": "In-the-Wild Speech & Multi-Step Tool Calling",
+  "evaluated_at": "2026-10-02T16:14:17.954770",
+  "total_scenarios": 0,
+  "overall_pass_rate": 0,
+  "passed": 0,
+  "failed": 0,
+  "failure_breakdown": {
+    "wrong_tools": 0,
+    "wrong_arguments": 0
+  },
+  "by_domain": {},
+  "by_difficulty": {},
+  "by_num_tools": {},
+  "by_disfluency_feature": {},
+  "by_state_rollback": {
+    "with_rollback": null,
+    "without_rollback": null
+  },
+  "scenario_results": []
+}
