@@ -390,7 +390,7 @@ def process_single(pid, example_id, input_path, provider, data, asr_model,
         try:
             hb_path = Path("logs/agent_heartbeat.log")
             if hb_path.exists():
-                with open(hb_path, "r") as f:
+                with open(hb_path, "r", encoding="utf-8") as f:
                     for line in f:
                         if line.startswith("LATENCY_TRACK_JSON: "):
                             try:

@@ -1,40 +1,40 @@
 {
   "benchmark_name": "In-the-Wild Speech & Multi-Step Tool Calling",
-  "evaluated_at": "2026-10-02T16:15:05.386193",
+  "evaluated_at": "2026-10-02T17:20:39.960091",
   "total_scenarios": 100,
-  "overall_pass_rate": 0.22,
-  "passed": 22,
-  "failed": 78,
+  "overall_pass_rate": 0.29,
+  "passed": 29,
+  "failed": 71,
   "failure_breakdown": {
-    "wrong_tools": 63,
+    "wrong_tools": 56,
     "wrong_arguments": 15
   },
   "by_domain": {
-    "ecommerce_support": 0.0,
+    "ecommerce_support": 0.241,
     "finance_billing": 0.32,
     "housing_location": 0.192,
     "travel_identity": 0.45
   },
   "by_difficulty": {
-    "easy": 0.25,
+    "easy": 0.444,
     "medium": 0.235,
     "hard": 0.167
   },
   "by_num_tools": {
-    "1": 0.273,
+    "1": 0.379,
     "2": 0.167,
     "3": 0.062
   },
   "by_disfluency_feature": {
-    "PAUSE": 0.167,
-    "FILLER": 0.172,
-    "HESITATION": 0.3,
+    "PAUSE": 0.278,
+    "FILLER": 0.207,
+    "HESITATION": 0.4,
     "FALSE_START": 0.25,
     "SELF_CORRECTION": 0.294
   },
   "by_state_rollback": {
     "with_rollback": 0.294,
-    "without_rollback": 0.205
+    "without_rollback": 0.289
   },
   "scenario_results": [
     {
@@ -45,21 +45,37 @@
       "num_tools": 1,
       "disfluency": [],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "track_order"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "track_order"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "track_order",
+              "passed": true,
+              "expected_args": {
+                "order_id": "ABC123"
+              },
+              "actual_args": {
+                "order_id": "ABC123"
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['track_order']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_01",
@@ -69,21 +85,37 @@
       "num_tools": 1,
       "disfluency": [],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "track_order"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "track_order"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "track_order",
+              "passed": true,
+              "expected_args": {
+                "order_id": "ABC123"
+              },
+              "actual_args": {
+                "order_id": "ABC123"
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['track_order']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_02",
@@ -93,21 +125,39 @@
       "num_tools": 1,
       "disfluency": [],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "search_products"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "search_products"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "search_products",
+              "passed": true,
+              "expected_args": {
+                "query": "wireless headphones",
+                "max_price": 100
+              },
+              "actual_args": {
+                "query": "wireless headphones",
+                "max_price": 100.0
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['search_products']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_04",
@@ -119,21 +169,37 @@
         "PAUSE"
       ],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "track_order"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "track_order"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "track_order",
+              "passed": true,
+              "expected_args": {
+                "order_id": "XYZ88"
+              },
+              "actual_args": {
+                "order_id": "XYZ88"
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['track_order']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_05",
@@ -146,21 +212,39 @@
         "HESITATION"
       ],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "search_products"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "search_products"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "search_products",
+              "passed": true,
+              "expected_args": {
+                "query": "desk",
+                "max_price": 300
+              },
+              "actual_args": {
+                "query": "desk",
+                "max_price": 300.0
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['search_products']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_06",
@@ -170,21 +254,39 @@
       "num_tools": 1,
       "disfluency": [],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "add_to_cart"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "add_to_cart"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "add_to_cart",
+              "passed": true,
+              "expected_args": {
+                "product_id": "K2",
+                "quantity": 2
+              },
+              "actual_args": {
+                "product_id": "K2",
+                "quantity": 2
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['add_to_cart']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_07",
@@ -222,21 +324,39 @@
         "PAUSE"
       ],
       "state_rollback": false,
-      "passed": false,
+      "passed": true,
       "checks": {
         "tool_selection": {
-          "passed": false,
+          "passed": true,
           "expected": [
             "search_products"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
             "search_products"
           ],
+          "missing": [],
           "unexpected": []
+        },
+        "argument_accuracy": {
+          "passed": true,
+          "details": [
+            {
+              "function": "search_products",
+              "passed": true,
+              "expected_args": {
+                "query": "mechanical keyboards",
+                "max_price": 200
+              },
+              "actual_args": {
+                "query": "mechanical keyboard",
+                "max_price": 200.0
+              },
+              "explanation": "All arguments match"
+            }
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['search_products']"
+      "failure_reason": ""
     },
     {
       "scenario_id": "ecommerce_08",
@@ -281,14 +401,17 @@
           "expected": [
             "search_products"
           ],
-          "actual": [],
-          "missing": [
+          "actual": [
+            "search_products",
             "search_products"
           ],
-          "unexpected": []
+          "missing": [],
+          "unexpected": [
+            "search_products"
+          ]
         }
       },
-      "failure_reason": "Missing tools: ['search_products']"
+      "failure_reason": "Unexpected tools: ['search_products']"
     },
     {
       "scenario_id": "ecommerce_10",
@@ -306,15 +429,16 @@
             "track_order",
             "search_products"
           ],
-          "actual": [],
+          "actual": [
+            "track_order"
+          ],
           "missing": [
-            "track_order",
             "search_products"
           ],
           "unexpected": []
         }
       },
-      "failure_reason": "Missing tools: ['track_order', 'search_products']"
+      "failure_reason": "Missing tools: ['search_products']"
     },
     {
       "scenario_id": "ecommerce_11",
