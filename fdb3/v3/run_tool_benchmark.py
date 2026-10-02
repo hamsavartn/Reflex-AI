@@ -126,47 +126,32 @@ def discover_inputs(root_dir=None):
 # ==============================================================================
 
 def load_asr_model():
-    """Load NeMo ASR model."""
-    print("🔊 Loading ASR model...")
-    import nemo.collections.asr as nemo_asr
-    model = nemo_asr.models.ASRModel.from_pretrained(model_name=ASR_MODEL_NAME)
-    if hasattr(model, 'cuda'):
-        try:
-            import torch
-            if torch.cuda.is_available():
-                model = model.cuda()
-            else:
-                model = model.cpu()
-        except Exception:
-            pass  # stay on CPU
+    """Load Whisper ASR model."""
+    print("🔊 Loading ASR model (Whisper)...")
+    from transformers import pipeline
+    import torch
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
+    pipe = pipeline(
+        "automatic-speech-recognition",
+        model="openai/whisper-base.en",
+        device=device
+    )
     print("✅ ASR model loaded")
-    return model
+    return pipe
 
 
 def run_asr(asr_model, audio_path):
     """Run ASR on an audio file and return transcript."""
     try:
-        outputs = asr_model.transcribe([str(audio_path)], timestamps=True)
-        if not outputs:
-            return {"text": "", "chunks": []}
-
-        result = outputs[0]
+        outputs = asr_model(str(audio_path), return_timestamps="word")
+        text = outputs.get("text", "")
         chunks = []
-        text = ""
-
-        if hasattr(result, "timestamp") and "word" in result.timestamp:
-            for w in result.timestamp["word"]:
-                text += w["word"] + " "
-                chunks.append({
-                    "text": w["word"],
-                    "timestamp": [w["start"], w["end"]],
-                })
-        else:
-            if hasattr(result, 'text'):
-                text = result.text
-            elif isinstance(result, str):
-                text = result
-
+        for chunk in outputs.get("chunks", []):
+            start, end = chunk.get("timestamp", (0.0, 0.0))
+            chunks.append({
+                "text": chunk.get("text", "").strip(),
+                "timestamp": [start, end],
+            })
         return {"text": text.strip(), "chunks": chunks}
     except Exception as e:
         print(f"  ❌ ASR error: {e}")
