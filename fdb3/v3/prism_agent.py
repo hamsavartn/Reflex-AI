@@ -635,7 +635,7 @@ async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc):
     try:
         response = await asyncio.to_thread(
             client.models.generate_content,
-            model='gemini-2.5-flash',
+            model='gemini-3.8-flash',
             contents=prompt,
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
