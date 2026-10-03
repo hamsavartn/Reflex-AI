@@ -11,7 +11,7 @@ echo "========================================================="
 if [ ! -f "fdb3/v3/.env.local" ]; then
     echo "ERROR: fdb3/v3/.env.local not found!"
     echo "Please create it and add:"
-    echo "GEMINI_API_KEY=your_gemini_key"
+    echo "GOOGLE_API_KEY=your_gemini_key"
     echo "LIVEKIT_URL=your_livekit_url"
     echo "LIVEKIT_API_KEY=your_livekit_api_key"
     echo "LIVEKIT_API_SECRET=your_livekit_api_secret"

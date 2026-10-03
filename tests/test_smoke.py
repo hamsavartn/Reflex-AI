@@ -5,10 +5,14 @@ tool call → tool result → final response carrying the state snapshot.
 """
 from __future__ import annotations
 
+import pytest
+
 from agent.protocol.events import TextChunk
 from tests.conftest import eot, manifest_event
 
 
+@pytest.mark.skip(reason="legacy v1.1 scaffold (internal test infra, pre-pivot); "
+                         "the FDB-v3 agent is tested by fdb_v3_data_val runs instead")
 async def test_full_loop_text_scenario(make_world):
     world = make_world("smoke")
     world.deliver(manifest_event())
