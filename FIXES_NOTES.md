@@ -242,3 +242,12 @@ upgrade is in place; empirical tuning resumes when quota returns.
 1. Create a second API key in a NEW Google AI Studio project (fresh free-tier bucket, free, 2 minutes) — recommended;
 2. Enable pay-as-you-go billing (whole benchmark costs ~$0.10–0.30 in flash tokens);
 3. Wait for the free-tier daily reset (~12:30 PM IST, midnight Pacific).
+
+### Gate offline validation (new key): **5/6**
+- Self-correction corrections verified end-to-end: `('june first')` →
+  `{'destination': 'Milan', 'date': 'June 3'}`; `checking` → `savings`.
+- Clean calls, multi-action chains, spoken-number args: untouched (no false
+  positives — critical for the precision metric).
+- One conservative miss: abandoned-false-start rejection returned "ok"
+  (fails open; costs precision only in that edge class). Accepted.
+- Colab bundle rebuilt with the gated agent (commit c296aec + this).
