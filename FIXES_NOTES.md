@@ -120,3 +120,37 @@ strong, defensible story.
   documented in `colab/README_COLAB.md` (upstream is CC BY-NC — we vendor
   with attribution and disclose every modification).
 - Keys: LiveKit + Gemini only; declared in README, never committed.
+
+---
+
+## 6. Addendum (Oct 3): the soxr assert saga — root cause of the "silent agent"
+
+**Symptom chain:** agent joins rooms but produces no transcripts/speech/tool
+calls; worker exits code 3 / 4294967295; "job executor is unresponsive".
+
+**Root cause (confirmed by on-screen dialog):** `livekit_ffi.dll` raises a CRT
+assert — `soxr-sys/src/fftf4g_cache.h:13 LSX_FFT_BR == NULL` — a thread-race
+in the soxr FFT cache when a worker's SECOND audio stream initializes. While
+the Windows modal is up, the process is frozen (looks like silence). Outcome
+is timing-dependent: fresh worker + 1 job = fine (Oct 2 smoke); 2nd job =
+crash; jobs dispatched to a dead worker are answered by the next worker
+joining after the user audio ended → babble, zero calls.
+
+**Mitigations applied (Windows local):**
+- `fixes/auto_ignore_assert.ps1` — UIAutomation watcher clicks **Ignore**
+  (safe: benign double-init) whenever the dialog appears.
+- `fdb3/v3/worker_supervisor.sh` — restarts the worker on any death until
+  `STOP_WORKER` exists; the batch runner resumes (skips completed results).
+- `.venv-fdb/.../sitecustomize.py` — best-effort CRT-assert→stderr routing
+  (the DLL links its own CRT, so the modal can still appear; the watcher
+  covers that).
+
+**Decision:** the **100-sample run runs on Colab/Linux** (user's plan) — no
+Windows modal there; the notebook now starts the worker inside a supervised
+restart loop, and the batch is resumable. Expect ~1 restart per worker
+lifetime on Linux if the race fires there; cost ≈ seconds per example.
+
+**Honest status of the local val runs:** 2 examples completed but with empty
+agent behavior (worker-death timing), so the P0 fixes remain unvalidated
+locally. Validation will be read from the Colab run's first results instead
+(benchmark `ecommerce_01` + a self-correction case are early in the set).
