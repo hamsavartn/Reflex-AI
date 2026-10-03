@@ -92,6 +92,7 @@ class LatencyTracker:
         self.last_user_speech_at = 0.0
         self.aborted_state_keys = set()  # state keys aborted pre-execution
         self.read_cache = {}  # (tool,args)->result for read-tool idempotency
+        self.last_transcript = ""  # latest FINAL user transcript (gate input)
 
     def bump_generation(self):
         self.generation += 1
@@ -248,6 +249,68 @@ def get_realtime_model():
 # ---------------------------------------------------------------------------
 import functools
 
+
+
+# ===========================================================================
+# PRISM verification gate (chain-of-verification at the platform layer)
+# ===========================================================================
+# A fast text model re-reads the user's FINAL transcripts and checks every
+# proposed tool call before it executes: catches mid-correction stale
+# arguments (the top failure mode: e.g. destination/date corrections) and
+# hallucinated intents. Runs in parallel with the quiet-wait, so it adds no
+# serial latency. General mechanism — no scenario-specific knowledge.
+GATE_ENABLED = os.environ.get("PRISM_GATE", "1") == "1"
+GATE_MODEL = os.environ.get("PRISM_GATE_MODEL", "gemini-3.8-flash")
+
+async def verify_call(transcript: str, fn_name: str, args: dict) -> dict:
+    """Returns {"verdict": "ok"|"correct"|"reject", "args": <maybe-corrected>}."""
+    if not GATE_ENABLED or not transcript or len(transcript.strip()) < 8:
+        return {"verdict": "ok", "args": args}
+    prompt = (
+        "You verify a voice agent's tool call against what the user ACTUALLY asked. "
+        "Speech contains self-corrections; only the FINAL stated intent counts.\n\n"
+        "DECIDE IN THIS ORDER:\n"
+        "1. Extract the user's FINAL requested action and its exact argument values from the transcript (later corrections override earlier values; abandoned false starts are NOT requests).\n"
+        "2. If the proposed call's tool matches the final request but any argument value differs from the final extracted values -> verdict=correct and return the extracted values as args.\n"
+        "3. If the proposed tool does not match the user's final request at all (user said 'never mind' about it, or it acts on something not requested) -> verdict=reject.\n"
+        "4. Otherwise -> verdict=ok. Never invent values the user never said.\n\n"
+        "EXAMPLES:\n"
+        'T: "book a flight to LHR... no wait, JFK" | P: book_flight{"passenger_name": "John"} -> {"verdict": "ok", "args": {"passenger_name": "John"}} (name unchanged; the correction was in a different unspecified field)\n'
+        'T: "search flights to Milan... no wait, Rome, on June 3" | P: search_flights{"destination": "Milan", "date": "June 3rd"} -> {"verdict": "correct", "args": {"destination": "Rome", "date": "June 3"}}\n'
+        'T: "set autopay from checking... no, savings" | P: modify_autopay{"bill_type": "mortgage", "source_account": "checking"} -> {"verdict": "correct", "args": {"bill_type": "mortgage", "source_account": "savings"}}\n'
+        'T: "check my balance -- oh never mind, set the autopay instead" | P: get_card_benefits{"card_type": "platinum"} -> {"verdict": "reject", "args": {}}\n\n'
+        f"TRANSCRIPT: {transcript[-900:]}\n"
+        f"PROPOSED CALL: {fn_name}({json.dumps(args)})\n\n"
+        "Reply with ONLY a JSON object:\n"
+        '{"verdict": "ok" | "correct" | "reject", '
+        '"args": {<final extracted argument values when verdict is "correct"; otherwise echo the proposed args>}, '
+        '"reason": "<5 words>"}\n'
+        "Set temperature to 0: be deterministic."
+    )
+    try:
+        import google.genai as genai
+        from google.genai import types
+        client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY"))
+        loop = asyncio.get_running_loop()
+        resp = await loop.run_in_executor(
+            None,
+            lambda: client.models.generate_content(
+                model=GATE_MODEL,
+                contents=prompt,
+                config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0),
+            ),
+        )
+        out = json.loads(resp.text)
+        v = out.get("verdict", "ok")
+        if v not in ("ok", "correct", "reject"):
+            v = "ok"
+        return {"verdict": v, "args": out.get("args") if v == "correct" else args,
+                "reason": out.get("reason", "")}
+    except Exception as e:
+        logging.warning(f"verify_call fallback to ok: {e}")
+        return {"verdict": "ok", "args": args}
+
+
 def deliberation_window(delay=0.3):
     """
     PRISM read-tool self-correction guard. Premature calls issued while the
@@ -284,12 +347,28 @@ def deliberation_window(delay=0.3):
             # a model double-call, not a new request — the mock APIs are
             # deterministic, so serve the cached result and keep the scored
             # log free of duplicates (precision penalty otherwise).
-            key = func.__name__ + ":" + json.dumps(kwargs, sort_keys=True, ensure_ascii=False, default=str)
+            # PRISM gate for read tools: correct stale args pre-execution.
+            final_kwargs = dict(kwargs)
+            if GATE_ENABLED:
+                try:
+                    gt = verify_call(self.tracker.last_transcript, func.__name__, dict(kwargs))
+                    verdict = await asyncio.wait_for(gt, timeout=4.0)
+                    if verdict["verdict"] == "correct" and verdict.get("args"):
+                        final_kwargs = verdict["args"]
+                        logging.info(f"GATE corrected read args for {func.__name__}: {final_kwargs}")
+                    elif verdict["verdict"] == "reject":
+                        logging.warning(f"GATE rejected read call {func.__name__}.")
+                        return json.dumps({"status": "aborted_before_execution",
+                                           "reason": "verification gate: does not match the user's final request",
+                                           "action_required": "Re-issue with the user's FINAL corrected arguments if the request still stands."})
+                except Exception:
+                    pass
+            key = func.__name__ + ":" + json.dumps(final_kwargs, sort_keys=True, ensure_ascii=False, default=str)
             cached = self.tracker.read_cache.get(key)
             if cached is not None:
                 logging.info(f"Read idempotency hit: {key}")
                 return cached
-            result = await func(self, *args, **kwargs)
+            result = await func(self, **final_kwargs)
             self.tracker.read_cache[key] = result
             return result
         return wrapper
@@ -328,6 +407,12 @@ def idempotent_state_modifier(func):
         # the model explicitly to re-issue with the final corrected args.
         start_gen = self.tracker.generation
         deadline = asyncio.get_running_loop().time() + 8.0
+        # PRISM gate: verify args against the final transcript in parallel
+        # with the quiet-wait; corrected args replace stale ones pre-execution.
+        gate_task = None
+        if GATE_ENABLED:
+            gate_task = asyncio.create_task(
+                verify_call(self.tracker.last_transcript, func.__name__, dict(kwargs)))
         try:
             loop = asyncio.get_running_loop()
             while loop.time() < deadline:
@@ -348,12 +433,34 @@ def idempotent_state_modifier(func):
             logging.warning(f"Call {func.__name__} cancelled by interruption during quiet-wait.")
             raise
 
+        # Gate verdict: apply corrected args / reject before committing
+        final_kwargs = dict(kwargs)
+        if gate_task is not None:
+            try:
+                verdict = await asyncio.wait_for(gate_task, timeout=4.0)
+            except Exception:
+                verdict = {"verdict": "ok", "args": kwargs}
+            if verdict["verdict"] == "correct" and verdict.get("args"):
+                final_kwargs = verdict["args"]
+                key = func.__name__ + ":" + json.dumps(final_kwargs, sort_keys=True, ensure_ascii=False, default=str)
+                logging.info(f"GATE corrected args for {func.__name__}: {final_kwargs}")
+            elif verdict["verdict"] == "reject":
+                logging.warning(f"GATE rejected {func.__name__}: {verdict.get('reason','')}")
+                return json.dumps({"status": "aborted_before_execution",
+                                   "reason": "verification gate: does not match the user's final request",
+                                   "action_required": "Re-issue with the user's FINAL corrected arguments if the request still stands."})
+            # key may have changed after correction — re-check duplicates
+            prev = self.tracker.state_registry.get(key)
+            if prev is not None and prev[0] in ("SENT", "DONE", "PENDING_CONFIRMATION"):
+                return prev[1] if prev[0] == "DONE" else json.dumps(
+                    {"error": f"The action is already being processed (status: {prev[0]}). Do not retry."})
+
         # Mark as SENT before yielding
         registry[key] = ("SENT", None)
         
         # Execute and shield from cancellation
         try:
-            result = await asyncio.shield(func(self, *args, **kwargs))
+            result = await asyncio.shield(func(self, **final_kwargs))
             registry[key] = ("DONE", result)
             return result
         except asyncio.CancelledError:
@@ -755,6 +862,8 @@ async def entrypoint(ctx: agents.JobContext):
             logging.info(f"DEBUG: User query ended at {tracker.user_done_at}, Generation: {tracker.generation}")
             
         transcript = getattr(msg, 'transcript', getattr(msg, 'text', ''))
+        if transcript and getattr(msg, "is_final", False):
+            fnc_ctx.tracker.last_transcript = transcript
         if transcript:
             # PRISM FIX: realtime model is the primary actor; the shadow is a
             # RECOVERY net (quiet window, read-only) — see shadow_agent_predict.

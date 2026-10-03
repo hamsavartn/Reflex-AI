@@ -209,3 +209,36 @@ agent logic). The authoritative 100-sample run moves to **Colab/Linux** with
 the round-3 agent (`PRISM_Z_Colab.zip`, rebuilt). On Linux the assert prints
 and the supervisor restarts — and a fresh environment removes the dialog
 storm entirely.
+
+---
+
+## 8. The "last push" (Oct 3 night): verification gate + honest ceiling
+
+**Research findings (FDB-v3 paper, arXiv 2604.04847):** best published system
+(GPT-Realtime) = **Pass@1 0.600**; NVIDIA Nemotron VoiceChat = **82.5%
+tool-selection F1**. So ~85% is a legitimate target for **F1**, never for
+strict pass. Self-corrections + hard multi-step chains = the universal
+failure mode (paper's own conclusion).
+
+**Failure mining of our 100-sample baseline (official matching semantics):**
+- 45 scenarios MISSING_ONLY — the realtime model answered with words and
+  never called the tool (add_to_cart ×13, track_order ×12, search_products ×11)
+- 31 chain-broke — a premature wrong-args call plus the corrected call never landing
+- search_flights.destination/date wrong in 15 (self-corrections)
+
+**Built: the verification gate** (`verify_call`, PRISM_GATE=1). While the
+quiet-wait runs, a fast text model (gemini-3.8-flash, temp 0, JSON mode)
+re-reads the user's FINAL transcript and checks the proposed call: stale args
+→ auto-corrected pre-execution; non-matching calls → rejected with a re-issue
+instruction. Wired into both state and read decorators; fails OPEN (gate
+failure never breaks the agent); idempotency keyed on corrected args.
+
+**Blocker hit:** today's Gemini free-tier quota is exhausted (429
+RESOURCE_EXHAUSTED) — the gate fell back to "ok" during offline testing
+(3/6 = exactly the ok-expected cases). The gate's few-shot decision-prompt
+upgrade is in place; empirical tuning resumes when quota returns.
+
+**Unblock options (user):**
+1. Create a second API key in a NEW Google AI Studio project (fresh free-tier bucket, free, 2 minutes) — recommended;
+2. Enable pay-as-you-go billing (whole benchmark costs ~$0.10–0.30 in flash tokens);
+3. Wait for the free-tier daily reset (~12:30 PM IST, midnight Pacific).
