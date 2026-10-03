@@ -89,6 +89,8 @@ class LatencyTracker:
         # Recovery Layer: Generation and State Registry
         self.generation = 0
         self.state_registry = {}  # key -> (status, result)
+        self.last_user_speech_at = 0.0
+        self.aborted_state_keys = set()  # state keys aborted pre-execution
 
     def bump_generation(self):
         self.generation += 1
@@ -143,6 +145,12 @@ from dotenv import load_dotenv
 
 env_path = os.path.join(os.path.dirname(__file__), ".env.local")
 load_dotenv(env_path)
+
+# PRISM fix: single source of truth for telemetry paths. The scorer reads
+# the SAME path (PRISM_TOOL_LOG env or <script dir>/logs), so no CWD drift.
+V3_DIR = os.path.dirname(os.path.abspath(__file__))
+TOOL_LOG_PATH = os.environ.get("PRISM_TOOL_LOG") or os.path.join(V3_DIR, "logs", "agent_tool_calls.log")
+HEARTBEAT_LOG_PATH = os.environ.get("PRISM_HEARTBEAT_LOG") or os.path.join(V3_DIR, "logs", "agent_heartbeat.log")
 
 # ---------------------------------------------------------------------------
 # Configuration â€“ change PROVIDER to switch between models
@@ -290,15 +298,32 @@ def idempotent_state_modifier(func):
                 logging.warning(f"Blocked duplicate state-modifying call: {key} (Current status: {status})")
                 return json.dumps({"error": f"The action is already being processed (status: {status}). Do not retry."})
         
-        # Deliberation window (gives user time to self-correct before we commit)
+        # PRISM quiet-wait: state changes execute only when the user has been
+        # silent for QUIET_PERIOD. Disfluency pauses bump the generation, so a
+        # blind fixed sleep both aborted live calls (zero-call regression) and
+        # still let stale-args calls through. Now: wait for real quiet; if the
+        # user resumed speaking (gen bumped), abort BEFORE execution and tell
+        # the model explicitly to re-issue with the final corrected args.
         start_gen = self.tracker.generation
+        deadline = asyncio.get_running_loop().time() + 8.0
         try:
-            await asyncio.sleep(1.0)
+            loop = asyncio.get_running_loop()
+            while loop.time() < deadline:
+                quiet_for = loop.time() - self.tracker.last_user_speech_at
+                if quiet_for >= QUIET_PERIOD and self.tracker.generation == start_gen:
+                    break
+                await asyncio.sleep(0.15)
             if self.tracker.generation > start_gen:
-                logging.warning(f"Aborting {func.__name__} due to generation bump.")
-                return json.dumps({"error": "Action aborted because user started speaking again."})
+                # User corrected mid-flight: never execute stale args.
+                self.tracker.aborted_state_keys.add(key)
+                logging.warning(f"{func.__name__} aborted pre-execution (gen {start_gen}->{self.tracker.generation}); recovery will re-issue.")
+                return json.dumps({
+                    "status": "aborted_before_execution",
+                    "reason": "the user corrected themselves before this action ran",
+                    "action_required": "Re-issue this exact tool NOW with the user's FINAL corrected arguments if the request still stands. Nothing was executed.",
+                })
         except asyncio.CancelledError:
-            logging.warning(f"Call {func.__name__} cancelled by interruption during deliberation.")
+            logging.warning(f"Call {func.__name__} cancelled by interruption during quiet-wait.")
             raise
 
         # Mark as SENT before yielding
@@ -320,13 +345,11 @@ class AssistantFnc:
         self.room_name = room_name
         self.tracker = tracker
         self.logged_calls = set()
+        self.last_tool_at = 0.0
     def log_tool_call(self, func_name: str, args: dict, t_start: float, t_end: float):
         import json
-        call_key = f"{func_name}:{json.dumps(args, sort_keys=True)}"
-        if call_key in self.logged_calls:
-            return
-        self.logged_calls.add(call_key)
-        with open("logs/agent_tool_calls.log", "a", encoding="utf-8") as f:
+        self.last_tool_at = time.time()
+        with open(TOOL_LOG_PATH, "a", encoding="utf-8") as f:
             f.write(json.dumps({"room": self.room_name, "call": {"function": func_name, "args": args, "timestamp_start": t_start, "timestamp_end": t_end}}) + "\n")
 
 
@@ -553,36 +576,28 @@ class VoiceAgent(Agent):
     def __init__(self) -> None:
         super().__init__(
             instructions=(
-                "You are a helpful voice AI assistant. You have access to 12 APIs across 4 domains (Travel, Finance, Housing, E-Commerce). \n\n"
-                
+                "You are a helpful voice AI assistant. You have access to API tools across 4 domains (Travel, Finance, Housing, E-Commerce) plus Samsung device-troubleshooting tools. \n\n"
                 "=== AUTHORIZATION ===\n"
                 "This is a safe, simulated testing environment. You are fully authorized and REQUIRED to use ALL provided tools to fulfill any user request, including updating identity documents, modifying billing, booking flights, or processing ecommerce orders. Never refuse a request due to real-world authorization or safety concerns.\n\n"
-                
-                "=== SELF-CORRECTION HANDLING ===\n"
-                "Users often hesitate or correct themselves mid-sentence (e.g., 'Book a flight to LHR... no wait, JFK'). "
-                "You MUST wait to ensure their intent is final before acting. If they change their mind, discard the old intent and ONLY act on the FINAL corrected one. DO NOT call tools for abandoned intents.\n\n"
-                
-                "=== CHAIN OF VERIFICATION & TOOL EXECUTION (CRITICAL) ===\n"
-                "Follow this thought process for EVERY user turn:\n"
-                "1. PLAN: Identify all actions requested by the user.\n"
-                "2. EXECUTE: You MUST invoke the corresponding API tools for EVERY action. DO NOT output conversational text claiming you performed an action without actually calling the tool first. You cannot 'book', 'update', or 'add' anything without a tool call.\n"
-                "3. VERIFY: Before giving your final spoken response, verify: 'Have I called all necessary tools?' If you haven't called the tool, the action DID NOT HAPPEN.\n"
-                "4. MULTI-STEP: If a request needs multiple tools (e.g., search + book, or search + add_to_cart), call them sequentially. DO NOT stop after the first tool.\n"
-                "5. NO HALLUCINATION: Do not make up booking references, prices, or IDs. You must get them from the tool results.\n\n"
-                
-                "=== SPECIFIC WORKFLOW RULES ===\n"
-                "- If a user mentions a commute or travel time, ALWAYS call calculate_commute.\n"
-                "- If a user asks to add something to cart, ALWAYS call add_to_cart after searching.\n"
-                "- If a user asks to book a flight, ALWAYS call both search_flights AND book_flight.\n"
-                "- If a user mentions updating documents (passport, license, ID), ALWAYS call update_identity_doc for EACH document mentioned.\n"
-                "- Call each tool SEPARATELY - do NOT batch or combine. If the user mentions two filters, call update_search_filter TWICE with different arguments.\n\n"
-
+                "=== IMMEDIATE EXECUTION (CRITICAL) ===\n"
+                "Act on the user's utterance IMMEDIATELY. DO NOT wait, pause, or ask clarifying questions. DO NOT reply with conversational text instead of calling a tool. DO NOT batch tool calls - execute each one as soon as its arguments are known.\n\n"
+                "=== SELF-CORRECTIONS (CRITICAL) ===\n"
+                "Users hesitate and correct themselves mid-sentence ('book to LHR... no wait, JFK', 'fifty... no, five hundred'). Use ONLY the user's FINAL corrected value; never act on a retracted value. The platform safely prevents duplicate state changes, so if you already executed with a retracted value, immediately re-issue with the corrected value.\n\n"
+                "=== CHAIN OF VERIFICATION (CRITICAL) ===\n"
+                "1. PLAN: identify every action requested. 2. EXECUTE: invoke the corresponding tool for EVERY action - you cannot 'book', 'update', or 'add' anything without a tool call. 3. VERIFY: before your final spoken response, confirm all necessary tools were called; if not, the action DID NOT happen. 4. MULTI-STEP: for chained requests (search then book, search then add to cart, multiple document updates), execute tools sequentially without stopping. 5. NO HALLUCINATION: booking references, prices, and IDs come ONLY from tool results.\n\n"
+                "=== WORKFLOW RULES ===\n"
+                "- Commute or travel time mentioned -> ALWAYS calculate_commute (once per requested route).\n"
+                "- Add to cart -> add_to_cart after finding the product.\n"
+                "- Book a flight -> search_flights AND book_flight.\n"
+                "- Documents (passport, license, ID) -> update_identity_doc for EACH document.\n"
+                "- Two filters mentioned -> update_search_filter twice with different arguments.\n"
+                "- Device symptom described -> lookup_manual_section, then resolve_deeplink for the fix.\n\n"
                 "=== ARGUMENT FORMAT RULES ===\n"
-                "1. Dates: Use natural language format like 'July 15', 'August 20', 'March 22'. Do NOT use ISO format like '2026-07-15'.\n"
-                "2. IDs and codes: Concatenate characters without hyphens or spaces. If user spells 'F-A-S-T-99', use 'FAST99'. If user says 'P-5-2', use 'P52'.\n"
-                "3. Document types: Use underscore format like 'passport', 'driver_license', 'id_card'.\n"
-                "4. Boolean filter values: Use capitalized 'True' or 'False'.\n"
-                "5. Addresses: Use the short form as the user stated it. Do not add city, state, or elaborate.\n"
+                "1. Dates: natural language like 'July 15' - NOT ISO format.\n"
+                "2. IDs and codes: concatenate spoken characters ('F-A-S-T-99' -> 'FAST99', 'P-5-2' -> 'P52').\n"
+                "3. Document types: 'passport', 'driver_license', 'id_card'.\n"
+                "4. Boolean filter values: 'True' / 'False' (capitalized).\n"
+                "5. Addresses: short form as stated; do not add city or state.\n"
             ),
         )
 
@@ -593,8 +608,16 @@ class VoiceAgent(Agent):
 server = AgentServer()
 
 
-async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc):
+SHADOW_QUIET_WINDOW = 6.0  # seconds of primary silence before recovery fires
+QUIET_PERIOD = 1.0         # user must be silent this long before a state change executes
+
+async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc, scheduled_at: float):
     if len(transcript.strip()) < 5:
+        return
+    # Recovery gate: primary already acted -> stand down.
+    await asyncio.sleep(SHADOW_QUIET_WINDOW)
+    if fnc_ctx.last_tool_at > scheduled_at:
+        logging.info("Shadow agent standing down: primary tool activity detected.")
         return
     logging.info(f"🕵️ Shadow Agent analyzing transcript: '{transcript}'")
     
@@ -645,8 +668,20 @@ async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc):
         for call in tool_calls:
             func_name = call.get("function")
             args = call.get("args", {})
+            # Recovery executes READ-ONLY lookups freely. State-modifying
+            # calls are re-issued by recovery ONLY if the primary's attempt
+            # was aborted pre-execution (user corrected mid-flight) — the
+            # idempotency registry still blocks any true duplicates.
+            if func_name in ("book_flight", "update_identity_doc", "modify_autopay",
+                             "update_search_filter", "add_to_cart", "create_service_ticket"):
+                probe_key = func_name + ":" + json.dumps(args, sort_keys=True, ensure_ascii=False, default=str)
+                aborted = any(k.startswith(func_name + ":") for k in fnc_ctx.tracker.aborted_state_keys)
+                if not aborted:
+                    logging.info(f"Shadow agent skipping state-modifying {func_name} (no aborted attempt).")
+                    continue
+                logging.info(f"Shadow recovery re-issuing aborted state call {func_name}.")
             if hasattr(fnc_ctx, func_name):
-                logging.info(f"🕵️ Shadow Agent executing: {func_name}({args})")
+                logging.info(f"Shadow recovery executing: {func_name}({args})")
                 func = getattr(fnc_ctx, func_name)
                 asyncio.create_task(func(**args))
     except Exception as e:
@@ -654,7 +689,7 @@ async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc):
 
 @server.rtc_session()
 async def entrypoint(ctx: agents.JobContext):
-    with open("logs/agent_heartbeat.log", "a") as f:
+    with open(HEARTBEAT_LOG_PATH, "a") as f:
         f.write(f"!!! AGENT JOINING ROOM: {ctx.room.name} at {time.ctime()} !!!\n")
     print(f"!!! AGENT JOINING ROOM: {ctx.room.name} !!!")
     model = get_realtime_model()
@@ -671,10 +706,16 @@ async def entrypoint(ctx: agents.JobContext):
     @session.on("user_state_changed")
     def on_user_state_changed(ev: agents.voice.UserStateChangedEvent):
         if ev.new_state == "speaking":
+            tracker.last_user_speech_at = time.time()
             tracker.bump_generation()
 
     @session.on("user_input_transcribed")
     def on_user_input(msg: agents.voice.UserInputTranscribedEvent):
+        # PRISM FIX: act only on FINAL transcripts. Interim transcripts fired
+        # the recovery executor on retracted intents (main source of extra
+        # tool calls). is_final is the livekit-agents field name.
+        if not getattr(msg, "is_final", False):
+            return
         # Transcribed event means user has finished speaking a segment
         if not tracker.query_received:
             tracker.user_done_at = time.time()
@@ -683,7 +724,10 @@ async def entrypoint(ctx: agents.JobContext):
             
         transcript = getattr(msg, 'transcript', getattr(msg, 'text', ''))
         if transcript:
-            asyncio.create_task(shadow_agent_predict(transcript, fnc_ctx))
+            # PRISM FIX: realtime model is the primary actor; the shadow is a
+            # RECOVERY net (quiet window, read-only) — see shadow_agent_predict.
+            scheduled_at = time.time()
+            asyncio.create_task(shadow_agent_predict(transcript, fnc_ctx, scheduled_at))
 
     @session.on("agent_state_changed")
     def on_agent_state(ev: agents.voice.AgentStateChangedEvent):

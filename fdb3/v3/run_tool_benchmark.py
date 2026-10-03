@@ -424,10 +424,13 @@ def process_single(pid, example_id, input_path, provider, data, asr_model,
     stream_start_time = result.get("stream_start_time", 0)
     if room_name:
         try:
-            telemetry_path = Path(__file__).parent.parent.parent / "logs" / "agent_tool_calls.log"
-            if not telemetry_path.exists():
-                # Fallback in case logs is in fdb3/v3/logs
-                telemetry_path = Path("logs/agent_tool_calls.log")
+            # PRISM fix (Fix 2): single source of truth for the telemetry path.
+            # PRISM_TOOL_LOG env if set, else <this script's dir>/logs/. This
+            # matches prism_agent.py's TOOL_LOG_PATH exactly — no CWD drift.
+            telemetry_path = Path(os.environ.get(
+                "PRISM_TOOL_LOG",
+                str(Path(__file__).resolve().parent / "logs" / "agent_tool_calls.log"),
+            ))
             if telemetry_path.exists():
                 with open(telemetry_path, "r", encoding="utf-8") as f:
                     for line in f:

@@ -89,6 +89,8 @@ class LatencyTracker:
         # Recovery Layer: Generation and State Registry
         self.generation = 0
         self.state_registry = {}  # key -> (status, result)
+        self.last_user_speech_at = 0.0
+        self.aborted_state_keys = set()  # state keys aborted pre-execution
 
     def bump_generation(self):
         self.generation += 1
@@ -296,15 +298,32 @@ def idempotent_state_modifier(func):
                 logging.warning(f"Blocked duplicate state-modifying call: {key} (Current status: {status})")
                 return json.dumps({"error": f"The action is already being processed (status: {status}). Do not retry."})
         
-        # Deliberation window (gives user time to self-correct before we commit)
+        # PRISM quiet-wait: state changes execute only when the user has been
+        # silent for QUIET_PERIOD. Disfluency pauses bump the generation, so a
+        # blind fixed sleep both aborted live calls (zero-call regression) and
+        # still let stale-args calls through. Now: wait for real quiet; if the
+        # user resumed speaking (gen bumped), abort BEFORE execution and tell
+        # the model explicitly to re-issue with the final corrected args.
         start_gen = self.tracker.generation
+        deadline = asyncio.get_running_loop().time() + 8.0
         try:
-            await asyncio.sleep(0.5)
+            loop = asyncio.get_running_loop()
+            while loop.time() < deadline:
+                quiet_for = loop.time() - self.tracker.last_user_speech_at
+                if quiet_for >= QUIET_PERIOD and self.tracker.generation == start_gen:
+                    break
+                await asyncio.sleep(0.15)
             if self.tracker.generation > start_gen:
-                logging.warning(f"Aborting {func.__name__} due to generation bump.")
-                return json.dumps({"error": "Action aborted because user started speaking again."})
+                # User corrected mid-flight: never execute stale args.
+                self.tracker.aborted_state_keys.add(key)
+                logging.warning(f"{func.__name__} aborted pre-execution (gen {start_gen}->{self.tracker.generation}); recovery will re-issue.")
+                return json.dumps({
+                    "status": "aborted_before_execution",
+                    "reason": "the user corrected themselves before this action ran",
+                    "action_required": "Re-issue this exact tool NOW with the user's FINAL corrected arguments if the request still stands. Nothing was executed.",
+                })
         except asyncio.CancelledError:
-            logging.warning(f"Call {func.__name__} cancelled by interruption during deliberation.")
+            logging.warning(f"Call {func.__name__} cancelled by interruption during quiet-wait.")
             raise
 
         # Mark as SENT before yielding
@@ -590,6 +609,7 @@ server = AgentServer()
 
 
 SHADOW_QUIET_WINDOW = 6.0  # seconds of primary silence before recovery fires
+QUIET_PERIOD = 1.0         # user must be silent this long before a state change executes
 
 async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc, scheduled_at: float):
     if len(transcript.strip()) < 5:
@@ -648,12 +668,18 @@ async def shadow_agent_predict(transcript: str, fnc_ctx: AssistantFnc, scheduled
         for call in tool_calls:
             func_name = call.get("function")
             args = call.get("args", {})
-            # Recovery executes READ-ONLY lookups only; state changes belong
-            # to the primary path (prevents duplicate state mutations).
+            # Recovery executes READ-ONLY lookups freely. State-modifying
+            # calls are re-issued by recovery ONLY if the primary's attempt
+            # was aborted pre-execution (user corrected mid-flight) — the
+            # idempotency registry still blocks any true duplicates.
             if func_name in ("book_flight", "update_identity_doc", "modify_autopay",
                              "update_search_filter", "add_to_cart", "create_service_ticket"):
-                logging.info(f"Shadow agent skipping state-modifying {func_name}.")
-                continue
+                probe_key = func_name + ":" + json.dumps(args, sort_keys=True, ensure_ascii=False, default=str)
+                aborted = any(k.startswith(func_name + ":") for k in fnc_ctx.tracker.aborted_state_keys)
+                if not aborted:
+                    logging.info(f"Shadow agent skipping state-modifying {func_name} (no aborted attempt).")
+                    continue
+                logging.info(f"Shadow recovery re-issuing aborted state call {func_name}.")
             if hasattr(fnc_ctx, func_name):
                 logging.info(f"Shadow recovery executing: {func_name}({args})")
                 func = getattr(fnc_ctx, func_name)
@@ -680,6 +706,7 @@ async def entrypoint(ctx: agents.JobContext):
     @session.on("user_state_changed")
     def on_user_state_changed(ev: agents.voice.UserStateChangedEvent):
         if ev.new_state == "speaking":
+            tracker.last_user_speech_at = time.time()
             tracker.bump_generation()
 
     @session.on("user_input_transcribed")
