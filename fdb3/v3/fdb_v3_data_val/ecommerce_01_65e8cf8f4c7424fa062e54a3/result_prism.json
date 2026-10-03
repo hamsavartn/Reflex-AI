@@ -1,0 +1,2806 @@
+{
+  "pid": "65e8cf8f4c7424fa062e54a3",
+  "example_id": "ecommerce_01",
+  "category": "ecommerce_support",
+  "title": "Simple Order Tracking",
+  "provider": "prism",
+  "evaluated_at": "2026-10-03T18:14:48.130386",
+  "inference_time_s": 56.47,
+  "room_name": "eval-a5ecc020",
+  "stream_start_time": 1791031497.2337718,
+  "input_transcript": "Like, uh, you know, well, I ordered something last week and, um, I haven't received it yet. Could you track it for me? The order ID is A, B, C, 1, 2, 3. That is it, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look",
+  "input_asr_chunks": [
+    {
+      "text": "Like,",
+      "timestamp": [
+        0.0,
+        1.78
+      ]
+    },
+    {
+      "text": "uh,",
+      "timestamp": [
+        1.78,
+        2.58
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        2.58,
+        2.84
+      ]
+    },
+    {
+      "text": "know,",
+      "timestamp": [
+        2.84,
+        3.4
+      ]
+    },
+    {
+      "text": "well,",
+      "timestamp": [
+        3.4,
+        4.06
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        4.06,
+        4.14
+      ]
+    },
+    {
+      "text": "ordered",
+      "timestamp": [
+        4.14,
+        4.42
+      ]
+    },
+    {
+      "text": "something",
+      "timestamp": [
+        4.42,
+        4.74
+      ]
+    },
+    {
+      "text": "last",
+      "timestamp": [
+        4.74,
+        5.06
+      ]
+    },
+    {
+      "text": "week",
+      "timestamp": [
+        5.06,
+        5.44
+      ]
+    },
+    {
+      "text": "and,",
+      "timestamp": [
+        5.44,
+        6.32
+      ]
+    },
+    {
+      "text": "um,",
+      "timestamp": [
+        6.32,
+        7.14
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        7.14,
+        7.5
+      ]
+    },
+    {
+      "text": "haven't",
+      "timestamp": [
+        7.5,
+        7.82
+      ]
+    },
+    {
+      "text": "received",
+      "timestamp": [
+        7.82,
+        8.1
+      ]
+    },
+    {
+      "text": "it",
+      "timestamp": [
+        8.1,
+        8.32
+      ]
+    },
+    {
+      "text": "yet.",
+      "timestamp": [
+        8.32,
+        8.86
+      ]
+    },
+    {
+      "text": "Could",
+      "timestamp": [
+        9.02,
+        9.02
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        9.02,
+        9.1
+      ]
+    },
+    {
+      "text": "track",
+      "timestamp": [
+        9.1,
+        9.34
+      ]
+    },
+    {
+      "text": "it",
+      "timestamp": [
+        9.34,
+        9.52
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        9.52,
+        9.72
+      ]
+    },
+    {
+      "text": "me?",
+      "timestamp": [
+        9.72,
+        10.4
+      ]
+    },
+    {
+      "text": "The",
+      "timestamp": [
+        10.64,
+        10.64
+      ]
+    },
+    {
+      "text": "order",
+      "timestamp": [
+        10.64,
+        10.86
+      ]
+    },
+    {
+      "text": "ID",
+      "timestamp": [
+        10.86,
+        11.26
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        11.26,
+        11.84
+      ]
+    },
+    {
+      "text": "A,",
+      "timestamp": [
+        11.84,
+        12.36
+      ]
+    },
+    {
+      "text": "B,",
+      "timestamp": [
+        12.36,
+        13.36
+      ]
+    },
+    {
+      "text": "C,",
+      "timestamp": [
+        13.36,
+        13.88
+      ]
+    },
+    {
+      "text": "1,",
+      "timestamp": [
+        13.88,
+        14.6
+      ]
+    },
+    {
+      "text": "2,",
+      "timestamp": [
+        14.6,
+        15.26
+      ]
+    },
+    {
+      "text": "3.",
+      "timestamp": [
+        15.26,
+        15.92
+      ]
+    },
+    {
+      "text": "That",
+      "timestamp": [
+        40.64,
+        41.5
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        41.5,
+        41.76
+      ]
+    },
+    {
+      "text": "it,",
+      "timestamp": [
+        41.76,
+        42.34
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        42.34,
+        42.56
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        42.56,
+        42.84
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        42.84,
+        43.26
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        43.26,
+        43.34
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        43.34,
+        43.42
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        43.42,
+        43.68
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        43.68,
+        43.72
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        43.72,
+        43.72
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        43.72,
+        43.72
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        43.72,
+        43.92
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        43.92,
+        44.08
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        44.08,
+        44.7
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        44.7,
+        44.76
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        44.76,
+        45.08
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.08,
+        45.08
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.08,
+        45.08
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.08,
+        45.08
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.08,
+        45.78
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.78,
+        45.78
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.78,
+        45.78
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.78,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "good,",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        45.82,
+        45.82
+      ]
+    }
+  ],
+  "user_speech_end_rel": 15.92,
+  "latency": {
+    "input_duration_s": 45.84,
+    "output_duration_s": 45.84,
+    "first_speech_s": 33.85
+  },
+  "user_done_unix": 1791031513.1537719,
+  "search_latency_breakdown": {
+    "room": "eval-a5ecc020",
+    "tool": "Search Tool",
+    "reasoning": 8.155,
+    "execution": 0.064,
+    "synthesis": 2.311,
+    "total": 10.529,
+    "agent_start_at": 1791031532.6100028
+  },
+  "absolute_total_latency": 19.456,
+  "transcript": "Thank you for watching, and I'll see you in the next video. Your order A, B, C, 1, 2, 3 is currently out for delivery.",
+  "asr_chunks": [
+    {
+      "text": "Thank",
+      "timestamp": [
+        0.0,
+        24.14
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "watching,",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "I'll",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "see",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "in",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "next",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "video.",
+      "timestamp": [
+        24.14,
+        24.14
+      ]
+    },
+    {
+      "text": "Your",
+      "timestamp": [
+        30.0,
+        33.9
+      ]
+    },
+    {
+      "text": "order",
+      "timestamp": [
+        33.9,
+        34.24
+      ]
+    },
+    {
+      "text": "A,",
+      "timestamp": [
+        34.24,
+        34.44
+      ]
+    },
+    {
+      "text": "B,",
+      "timestamp": [
+        34.44,
+        34.68
+      ]
+    },
+    {
+      "text": "C,",
+      "timestamp": [
+        34.68,
+        34.74
+      ]
+    },
+    {
+      "text": "1,",
+      "timestamp": [
+        34.74,
+        34.96
+      ]
+    },
+    {
+      "text": "2,",
+      "timestamp": [
+        34.96,
+        35.08
+      ]
+    },
+    {
+      "text": "3",
+      "timestamp": [
+        35.08,
+        35.28
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        35.28,
+        35.58
+      ]
+    },
+    {
+      "text": "currently",
+      "timestamp": [
+        35.58,
+        36.0
+      ]
+    },
+    {
+      "text": "out",
+      "timestamp": [
+        36.0,
+        36.32
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        36.32,
+        36.46
+      ]
+    },
+    {
+      "text": "delivery.",
+      "timestamp": [
+        36.46,
+        39.36
+      ]
+    }
+  ],
+  "perceived_total_latency": -15.92,
+  "audio_agent_speech_start": 0.0,
+  "actual_tool_calls": [
+    {
+      "function": "track_order",
+      "args": {
+        "order_id": "ABC123"
+      },
+      "timestamp_start": 33.0,
+      "timestamp_end": 33.07
+    },
+    {
+      "function": "track_order",
+      "args": {
+        "order_id": "ABC123"
+      },
+      "timestamp_start": 38.38,
+      "timestamp_end": 38.38
+    }
+  ],
+  "status": "completed"
+}

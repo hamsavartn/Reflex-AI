@@ -1,0 +1,26 @@
+{
+  "id": "ecommerce_01",
+  "domain": "ecommerce_support",
+  "title": "Simple Order Tracking",
+  "difficulty": "easy",
+  "dialogue": [
+    {
+      "user": "Like... uh, you know... well, i ordered something last week and... um, I haven't received it yet. Could you track it for me? The order ID is A-B-C-1-2-3.",
+      "user_annotated": "Like... uh, you know... well, i ordered something last week and... um, I haven't received it yet. Could you track it for me? The order ID is A-B-C-1-2-3.",
+      "ai": "I will check the status of order ABC123 for you right away."
+    }
+  ],
+  "acting_notes": "Say the order ID clearly, one character at a time.",
+  "disfluency_features": [],
+  "expected_tool_calls": [
+    {
+      "function": "track_order",
+      "args": {
+        "order_id": "ABC123"
+      }
+    }
+  ],
+  "num_expected_calls": 1,
+  "state_rollback_test": false,
+  "latency_profile": "normal"
+}

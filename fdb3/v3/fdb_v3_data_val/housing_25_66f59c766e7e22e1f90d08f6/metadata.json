@@ -1,0 +1,50 @@
+{
+  "id": "housing_25",
+  "domain": "housing_location",
+  "title": "Full Chain: Filters + Search + Correction",
+  "difficulty": "hard",
+  "dialogue": [
+    {
+      "user": "You know... you know... alright... first set the filter so pets are allowed... and set the max price to 3000. Then search for places in San Francisco — wait, actually, change the max price to 3500 instead. San Francisco is expensive so... um, I need more room in the budget.",
+      "user_annotated": "You know... you know... alright... first set the filter so pets are allowed... and set the max price to 3000. Then search for places in San Francisco — wait, actually, change the max price to 3500 instead. San Francisco is expensive so... um, I need more room in the budget.",
+      "ai": "I'll allow pets, set max price to 3500, and search San Francisco."
+    }
+  ],
+  "acting_notes": "Set two filters, start a search, then correct one filter.",
+  "disfluency_features": [
+    "SELF_CORRECTION"
+  ],
+  "expected_tool_calls": [
+    {
+      "function": "update_search_filter",
+      "args": {
+        "filter_name": "pets_allowed",
+        "value": true
+      }
+    },
+    {
+      "function": "update_search_filter",
+      "args": {
+        "filter_name": "max_price",
+        "value": 3500
+      }
+    },
+    {
+      "function": "search_apartments",
+      "args": {
+        "city": "San Francisco"
+      }
+    }
+  ],
+  "num_expected_calls": 3,
+  "state_rollback_test": true,
+  "state_rollback_details": {
+    "original_param": {
+      "value": 3000
+    },
+    "corrected_param": {
+      "value": 3500
+    }
+  },
+  "latency_profile": "normal"
+}

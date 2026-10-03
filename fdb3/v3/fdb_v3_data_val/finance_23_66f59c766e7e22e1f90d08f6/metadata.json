@@ -1,0 +1,38 @@
+{
+  "id": "finance_23",
+  "domain": "finance_billing",
+  "title": "False Start + Autopay Correction",
+  "difficulty": "hard",
+  "dialogue": [
+    {
+      "user": "Um... so can you check the balance on my — oh actually, never mind that part. What... um, I really need is to set the mortgage autopay to pull from checking. No wait, on second thought, savings is better. Make it pull from savings instead.",
+      "user_annotated": "Um... so can you check the balance on my — oh actually, never mind that part. What... um, I really need is to set the mortgage autopay to pull from checking. No wait, on second thought, savings is better. Make it pull from savings instead.",
+      "ai": "I'll set your mortgage autopay to pull from savings."
+    }
+  ],
+  "acting_notes": "Start a thought then abandon it. Then give the autopay request, then correct the account type.",
+  "disfluency_features": [
+    "FALSE_START",
+    "SELF_CORRECTION"
+  ],
+  "expected_tool_calls": [
+    {
+      "function": "modify_autopay",
+      "args": {
+        "bill_type": "mortgage",
+        "source_account": "savings"
+      }
+    }
+  ],
+  "num_expected_calls": 1,
+  "state_rollback_test": true,
+  "state_rollback_details": {
+    "original_param": {
+      "source_account": "checking"
+    },
+    "corrected_param": {
+      "source_account": "savings"
+    }
+  },
+  "latency_profile": "normal"
+}

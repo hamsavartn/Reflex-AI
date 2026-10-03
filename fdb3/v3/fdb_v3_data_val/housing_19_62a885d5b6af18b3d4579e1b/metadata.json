@@ -1,0 +1,40 @@
+{
+  "id": "housing_19",
+  "domain": "housing_location",
+  "title": "Double Commute Correction",
+  "difficulty": "hard",
+  "dialogue": [
+    {
+      "user": "Well... uh... calculate the transit time to the office — wait, no,... um, I wouldn't be going to the office, I'd be going to the gym. And actually, now that I think about it, I'd drive there, not take transit. So make it driving to the gym from my house.",
+      "user_annotated": "Well... uh... calculate the transit time to the office — wait, no,... um, I wouldn't be going to the office, I'd be going to the gym. And actually, now that I think about it, I'd drive there, not take transit. So make it driving to the gym from my house.",
+      "ai": "I will calculate the driving commute from your house to the gym."
+    }
+  ],
+  "acting_notes": "Change destination first, then change the mode.",
+  "disfluency_features": [
+    "SELF_CORRECTION"
+  ],
+  "expected_tool_calls": [
+    {
+      "function": "calculate_commute",
+      "args": {
+        "origin_address": "my house",
+        "destination_address": "the gym",
+        "mode": "driving"
+      }
+    }
+  ],
+  "num_expected_calls": 1,
+  "state_rollback_test": true,
+  "state_rollback_details": {
+    "original_param": {
+      "destination_address": "the office",
+      "mode": "transit"
+    },
+    "corrected_param": {
+      "destination_address": "the gym",
+      "mode": "driving"
+    }
+  },
+  "latency_profile": "normal"
+}

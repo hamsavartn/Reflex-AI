@@ -1,0 +1,375 @@
+{
+  "pid": "62a885d5b6af18b3d4579e1b",
+  "example_id": "housing_19",
+  "category": "housing_location",
+  "title": "Double Commute Correction",
+  "provider": "gemini3_6",
+  "evaluated_at": "2026-09-30T18:01:38.566839",
+  "inference_time_s": 50.06,
+  "room_name": "eval-99ac2a90",
+  "stream_start_time": 1790791302.222774,
+  "input_transcript": "Well, uh, calculate the transit time to the office. Wait, no, um I wouldn't be going to the office, I'd be going to the gym. And actually, now that I think about it, I'd drive there and not take transit. So make a drive into the gym from my house.",
+  "input_asr_chunks": [
+    {
+      "text": "Well,",
+      "timestamp": [
+        0.32,
+        0.64
+      ]
+    },
+    {
+      "text": "uh,",
+      "timestamp": [
+        0.88,
+        1.2
+      ]
+    },
+    {
+      "text": "calculate",
+      "timestamp": [
+        1.44,
+        2.08
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        2.08,
+        2.32
+      ]
+    },
+    {
+      "text": "transit",
+      "timestamp": [
+        2.32,
+        2.72
+      ]
+    },
+    {
+      "text": "time",
+      "timestamp": [
+        2.72,
+        2.88
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        2.88,
+        3.04
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        3.04,
+        3.12
+      ]
+    },
+    {
+      "text": "office.",
+      "timestamp": [
+        3.12,
+        3.36
+      ]
+    },
+    {
+      "text": "Wait,",
+      "timestamp": [
+        3.52,
+        3.7600000000000002
+      ]
+    },
+    {
+      "text": "no,",
+      "timestamp": [
+        3.92,
+        4.16
+      ]
+    },
+    {
+      "text": "um",
+      "timestamp": [
+        4.32,
+        4.5600000000000005
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        4.8,
+        4.96
+      ]
+    },
+    {
+      "text": "wouldn't",
+      "timestamp": [
+        4.96,
+        5.2
+      ]
+    },
+    {
+      "text": "be",
+      "timestamp": [
+        5.2,
+        5.36
+      ]
+    },
+    {
+      "text": "going",
+      "timestamp": [
+        5.36,
+        5.5200000000000005
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        5.5200000000000005,
+        5.6000000000000005
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        5.6000000000000005,
+        5.76
+      ]
+    },
+    {
+      "text": "office,",
+      "timestamp": [
+        5.76,
+        6.0
+      ]
+    },
+    {
+      "text": "I'd",
+      "timestamp": [
+        6.16,
+        6.48
+      ]
+    },
+    {
+      "text": "be",
+      "timestamp": [
+        6.48,
+        6.5600000000000005
+      ]
+    },
+    {
+      "text": "going",
+      "timestamp": [
+        6.5600000000000005,
+        6.72
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        6.72,
+        6.8
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        6.8,
+        6.88
+      ]
+    },
+    {
+      "text": "gym.",
+      "timestamp": [
+        6.88,
+        7.44
+      ]
+    },
+    {
+      "text": "And",
+      "timestamp": [
+        7.76,
+        7.92
+      ]
+    },
+    {
+      "text": "actually,",
+      "timestamp": [
+        7.92,
+        8.16
+      ]
+    },
+    {
+      "text": "now",
+      "timestamp": [
+        8.24,
+        8.4
+      ]
+    },
+    {
+      "text": "that",
+      "timestamp": [
+        8.4,
+        8.48
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        8.48,
+        8.64
+      ]
+    },
+    {
+      "text": "think",
+      "timestamp": [
+        8.64,
+        8.72
+      ]
+    },
+    {
+      "text": "about",
+      "timestamp": [
+        8.72,
+        8.88
+      ]
+    },
+    {
+      "text": "it,",
+      "timestamp": [
+        8.88,
+        9.040000000000001
+      ]
+    },
+    {
+      "text": "I'd",
+      "timestamp": [
+        9.120000000000001,
+        9.36
+      ]
+    },
+    {
+      "text": "drive",
+      "timestamp": [
+        9.36,
+        9.68
+      ]
+    },
+    {
+      "text": "there",
+      "timestamp": [
+        9.68,
+        9.84
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        9.84,
+        10.0
+      ]
+    },
+    {
+      "text": "not",
+      "timestamp": [
+        10.0,
+        10.16
+      ]
+    },
+    {
+      "text": "take",
+      "timestamp": [
+        10.16,
+        10.4
+      ]
+    },
+    {
+      "text": "transit.",
+      "timestamp": [
+        10.4,
+        10.72
+      ]
+    },
+    {
+      "text": "So",
+      "timestamp": [
+        10.88,
+        10.96
+      ]
+    },
+    {
+      "text": "make",
+      "timestamp": [
+        11.120000000000001,
+        11.28
+      ]
+    },
+    {
+      "text": "a",
+      "timestamp": [
+        11.28,
+        11.36
+      ]
+    },
+    {
+      "text": "drive",
+      "timestamp": [
+        11.36,
+        11.6
+      ]
+    },
+    {
+      "text": "into",
+      "timestamp": [
+        11.6,
+        11.76
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        11.84,
+        11.92
+      ]
+    },
+    {
+      "text": "gym",
+      "timestamp": [
+        11.92,
+        12.08
+      ]
+    },
+    {
+      "text": "from",
+      "timestamp": [
+        12.16,
+        12.4
+      ]
+    },
+    {
+      "text": "my",
+      "timestamp": [
+        12.4,
+        12.64
+      ]
+    },
+    {
+      "text": "house.",
+      "timestamp": [
+        12.64,
+        13.36
+      ]
+    }
+  ],
+  "user_speech_end_rel": 13.36,
+  "latency": {
+    "input_duration_s": 43.44,
+    "output_duration_s": 43.44,
+    "first_speech_s": 43.44
+  },
+  "user_done_unix": 1790791315.582774,
+  "transcript": "",
+  "asr_chunks": [],
+  "actual_tool_calls": [],
+  "status": "completed"
+}

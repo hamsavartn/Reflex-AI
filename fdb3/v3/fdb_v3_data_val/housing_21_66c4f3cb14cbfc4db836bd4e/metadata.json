@@ -1,0 +1,46 @@
+{
+  "id": "housing_21",
+  "domain": "housing_location",
+  "title": "Multi-Correction Across Statements",
+  "difficulty": "hard",
+  "dialogue": [
+    {
+      "user": "Well, hmm... you know... i want to search for a place with 2 bedrooms. Wait... actually... um, I meant 3 bedrooms, we decided we need a home office. Also check the transit time to the train station — actually, I'd rather walk, so make that walking time.",
+      "user_annotated": "Well, hmm... you know... i want to search for a place with 2 bedrooms. Wait... actually... um, I meant 3 bedrooms, we decided we need a home office. Also check the transit time to the train station — actually, I'd rather walk, so make that walking time.",
+      "ai": "I'll search for 3-bedroom places and calculate walking time to the station."
+    }
+  ],
+  "acting_notes": "Make a correction in each sentence.",
+  "disfluency_features": [
+    "SELF_CORRECTION"
+  ],
+  "expected_tool_calls": [
+    {
+      "function": "search_apartments",
+      "args": {
+        "bedrooms": 3
+      }
+    },
+    {
+      "function": "calculate_commute",
+      "args": {
+        "origin_address": "$RESULT_0.apartments[0].address",
+        "destination_address": "train station",
+        "mode": "walking"
+      }
+    }
+  ],
+  "num_expected_calls": 2,
+  "state_rollback_test": true,
+  "state_rollback_details": {
+    "original_param": {
+      "bedrooms": 2,
+      "mode": "transit"
+    },
+    "corrected_param": {
+      "bedrooms": 3,
+      "mode": "walking"
+    }
+  },
+  "latency_profile": "normal"
+}

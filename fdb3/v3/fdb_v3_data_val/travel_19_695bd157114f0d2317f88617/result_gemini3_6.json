@@ -1,0 +1,298 @@
+{
+  "pid": "695bd157114f0d2317f88617",
+  "example_id": "travel_19",
+  "category": "travel_identity",
+  "title": "Double Destination + Date Correction",
+  "provider": "gemini3_6",
+  "evaluated_at": "2026-09-30T18:19:37.735866",
+  "inference_time_s": 55.96,
+  "room_name": "eval-5634a264",
+  "stream_start_time": 1790792381.3045247,
+  "input_transcript": "Um, okay, I want to look for flights to Rome. No, wait, I changed my mind. Let's do Milan instead. And I was thinking June 1st. Well, wait, but actually, June 3rd works better for me. Sorry about that.",
+  "input_asr_chunks": [
+    {
+      "text": "Um,",
+      "timestamp": [
+        0.96,
+        1.2
+      ]
+    },
+    {
+      "text": "okay,",
+      "timestamp": [
+        1.36,
+        1.6
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        1.76,
+        1.84
+      ]
+    },
+    {
+      "text": "want",
+      "timestamp": [
+        1.84,
+        2.0
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        2.0,
+        2.08
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        2.08,
+        2.24
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        2.24,
+        2.48
+      ]
+    },
+    {
+      "text": "flights",
+      "timestamp": [
+        2.48,
+        2.96
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        2.96,
+        3.2
+      ]
+    },
+    {
+      "text": "Rome.",
+      "timestamp": [
+        3.2,
+        3.7600000000000002
+      ]
+    },
+    {
+      "text": "No,",
+      "timestamp": [
+        4.32,
+        4.5600000000000005
+      ]
+    },
+    {
+      "text": "wait,",
+      "timestamp": [
+        4.64,
+        4.88
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        5.04,
+        5.12
+      ]
+    },
+    {
+      "text": "changed",
+      "timestamp": [
+        5.12,
+        5.44
+      ]
+    },
+    {
+      "text": "my",
+      "timestamp": [
+        5.44,
+        5.5200000000000005
+      ]
+    },
+    {
+      "text": "mind.",
+      "timestamp": [
+        5.5200000000000005,
+        5.76
+      ]
+    },
+    {
+      "text": "Let's",
+      "timestamp": [
+        5.84,
+        6.08
+      ]
+    },
+    {
+      "text": "do",
+      "timestamp": [
+        6.08,
+        6.24
+      ]
+    },
+    {
+      "text": "Milan",
+      "timestamp": [
+        6.24,
+        7.04
+      ]
+    },
+    {
+      "text": "instead.",
+      "timestamp": [
+        7.04,
+        7.92
+      ]
+    },
+    {
+      "text": "And",
+      "timestamp": [
+        8.56,
+        8.8
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        8.8,
+        8.88
+      ]
+    },
+    {
+      "text": "was",
+      "timestamp": [
+        8.88,
+        9.040000000000001
+      ]
+    },
+    {
+      "text": "thinking",
+      "timestamp": [
+        9.040000000000001,
+        9.44
+      ]
+    },
+    {
+      "text": "June",
+      "timestamp": [
+        9.44,
+        9.92
+      ]
+    },
+    {
+      "text": "1st.",
+      "timestamp": [
+        9.92,
+        10.72
+      ]
+    },
+    {
+      "text": "Well,",
+      "timestamp": [
+        11.36,
+        11.6
+      ]
+    },
+    {
+      "text": "wait,",
+      "timestamp": [
+        11.68,
+        12.0
+      ]
+    },
+    {
+      "text": "but",
+      "timestamp": [
+        12.16,
+        12.48
+      ]
+    },
+    {
+      "text": "actually,",
+      "timestamp": [
+        12.48,
+        12.8
+      ]
+    },
+    {
+      "text": "June",
+      "timestamp": [
+        12.96,
+        13.44
+      ]
+    },
+    {
+      "text": "3rd",
+      "timestamp": [
+        13.44,
+        14.32
+      ]
+    },
+    {
+      "text": "works",
+      "timestamp": [
+        14.32,
+        14.96
+      ]
+    },
+    {
+      "text": "better",
+      "timestamp": [
+        14.96,
+        15.280000000000001
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        15.280000000000001,
+        15.6
+      ]
+    },
+    {
+      "text": "me.",
+      "timestamp": [
+        15.6,
+        15.92
+      ]
+    },
+    {
+      "text": "Sorry",
+      "timestamp": [
+        16.240000000000002,
+        16.96
+      ]
+    },
+    {
+      "text": "about",
+      "timestamp": [
+        16.96,
+        17.28
+      ]
+    },
+    {
+      "text": "that.",
+      "timestamp": [
+        17.28,
+        17.6
+      ]
+    }
+  ],
+  "user_speech_end_rel": 17.6,
+  "latency": {
+    "input_duration_s": 49.14,
+    "output_duration_s": 49.14,
+    "first_speech_s": 49.14
+  },
+  "user_done_unix": 1790792398.9045246,
+  "transcript": "",
+  "asr_chunks": [],
+  "actual_tool_calls": [],
+  "status": "completed"
+}

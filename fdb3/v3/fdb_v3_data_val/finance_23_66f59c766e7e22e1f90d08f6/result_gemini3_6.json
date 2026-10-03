@@ -1,0 +1,340 @@
+{
+  "pid": "66f59c766e7e22e1f90d08f6",
+  "example_id": "finance_23",
+  "category": "finance_billing",
+  "title": "False Start + Autopay Correction",
+  "provider": "gemini3_6",
+  "evaluated_at": "2026-09-30T17:43:13.576198",
+  "inference_time_s": 56.7,
+  "room_name": "eval-da60da23",
+  "stream_start_time": 1790790197.1574388,
+  "input_transcript": "Um so can you check the balance on my actually never mind never mind forget that part I really need to set the mortgage auto pay to pull from checking no no actually on second thought savings is better make it pull from savings instead",
+  "input_asr_chunks": [
+    {
+      "text": "Um",
+      "timestamp": [
+        1.36,
+        1.84
+      ]
+    },
+    {
+      "text": "so",
+      "timestamp": [
+        2.72,
+        2.96
+      ]
+    },
+    {
+      "text": "can",
+      "timestamp": [
+        3.12,
+        3.36
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        3.36,
+        3.52
+      ]
+    },
+    {
+      "text": "check",
+      "timestamp": [
+        3.52,
+        3.84
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        3.84,
+        4.0
+      ]
+    },
+    {
+      "text": "balance",
+      "timestamp": [
+        4.0,
+        4.72
+      ]
+    },
+    {
+      "text": "on",
+      "timestamp": [
+        4.72,
+        4.96
+      ]
+    },
+    {
+      "text": "my",
+      "timestamp": [
+        4.96,
+        5.2
+      ]
+    },
+    {
+      "text": "actually",
+      "timestamp": [
+        5.76,
+        5.92
+      ]
+    },
+    {
+      "text": "never",
+      "timestamp": [
+        6.08,
+        6.32
+      ]
+    },
+    {
+      "text": "mind",
+      "timestamp": [
+        6.32,
+        6.5600000000000005
+      ]
+    },
+    {
+      "text": "never",
+      "timestamp": [
+        6.640000000000001,
+        6.8
+      ]
+    },
+    {
+      "text": "mind",
+      "timestamp": [
+        6.8,
+        7.04
+      ]
+    },
+    {
+      "text": "forget",
+      "timestamp": [
+        7.12,
+        7.36
+      ]
+    },
+    {
+      "text": "that",
+      "timestamp": [
+        7.36,
+        7.6000000000000005
+      ]
+    },
+    {
+      "text": "part",
+      "timestamp": [
+        7.6000000000000005,
+        7.92
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        8.48,
+        8.64
+      ]
+    },
+    {
+      "text": "really",
+      "timestamp": [
+        8.64,
+        8.88
+      ]
+    },
+    {
+      "text": "need",
+      "timestamp": [
+        8.88,
+        9.040000000000001
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        9.040000000000001,
+        9.28
+      ]
+    },
+    {
+      "text": "set",
+      "timestamp": [
+        9.28,
+        9.44
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        9.44,
+        9.6
+      ]
+    },
+    {
+      "text": "mortgage",
+      "timestamp": [
+        9.6,
+        10.24
+      ]
+    },
+    {
+      "text": "auto",
+      "timestamp": [
+        10.24,
+        10.72
+      ]
+    },
+    {
+      "text": "pay",
+      "timestamp": [
+        10.72,
+        11.040000000000001
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        11.040000000000001,
+        11.200000000000001
+      ]
+    },
+    {
+      "text": "pull",
+      "timestamp": [
+        11.200000000000001,
+        11.52
+      ]
+    },
+    {
+      "text": "from",
+      "timestamp": [
+        11.52,
+        11.76
+      ]
+    },
+    {
+      "text": "checking",
+      "timestamp": [
+        11.76,
+        12.24
+      ]
+    },
+    {
+      "text": "no",
+      "timestamp": [
+        12.64,
+        12.8
+      ]
+    },
+    {
+      "text": "no",
+      "timestamp": [
+        12.96,
+        13.120000000000001
+      ]
+    },
+    {
+      "text": "actually",
+      "timestamp": [
+        13.280000000000001,
+        13.52
+      ]
+    },
+    {
+      "text": "on",
+      "timestamp": [
+        13.84,
+        14.08
+      ]
+    },
+    {
+      "text": "second",
+      "timestamp": [
+        14.08,
+        14.48
+      ]
+    },
+    {
+      "text": "thought",
+      "timestamp": [
+        14.48,
+        14.64
+      ]
+    },
+    {
+      "text": "savings",
+      "timestamp": [
+        14.88,
+        15.36
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        15.36,
+        15.52
+      ]
+    },
+    {
+      "text": "better",
+      "timestamp": [
+        15.52,
+        15.68
+      ]
+    },
+    {
+      "text": "make",
+      "timestamp": [
+        15.92,
+        16.0
+      ]
+    },
+    {
+      "text": "it",
+      "timestamp": [
+        16.080000000000002,
+        16.16
+      ]
+    },
+    {
+      "text": "pull",
+      "timestamp": [
+        16.16,
+        16.4
+      ]
+    },
+    {
+      "text": "from",
+      "timestamp": [
+        16.4,
+        16.56
+      ]
+    },
+    {
+      "text": "savings",
+      "timestamp": [
+        16.56,
+        17.12
+      ]
+    },
+    {
+      "text": "instead",
+      "timestamp": [
+        17.12,
+        17.92
+      ]
+    }
+  ],
+  "user_speech_end_rel": 17.92,
+  "latency": {
+    "input_duration_s": 49.98,
+    "output_duration_s": 49.98,
+    "first_speech_s": 49.98
+  },
+  "user_done_unix": 1790790215.0774388,
+  "transcript": "",
+  "asr_chunks": [],
+  "actual_tool_calls": [],
+  "status": "completed"
+}

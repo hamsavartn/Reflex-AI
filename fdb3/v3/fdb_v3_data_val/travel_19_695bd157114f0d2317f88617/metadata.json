@@ -1,0 +1,39 @@
+{
+  "id": "travel_19",
+  "domain": "travel_identity",
+  "title": "Double Destination + Date Correction",
+  "difficulty": "hard",
+  "dialogue": [
+    {
+      "user": "Hmm... okay so, I want to look at flights to Rome — no wait, I changed my mind, let's do Milan instead. And I was thinking June 1st, but actually, June 3rd works better for me.",
+      "user_annotated": "Hmm... okay so, I want to look at flights to Rome — no wait, I changed my mind, let's do Milan instead. And I was thinking June 1st, but actually, June 3rd works better for me.",
+      "ai": "I will search for flights to Milan on June 3rd."
+    }
+  ],
+  "acting_notes": "Make two separate corrections naturally: first the destination, then the date.",
+  "disfluency_features": [
+    "SELF_CORRECTION"
+  ],
+  "expected_tool_calls": [
+    {
+      "function": "search_flights",
+      "args": {
+        "destination": "Milan",
+        "date": "June 3"
+      }
+    }
+  ],
+  "num_expected_calls": 1,
+  "state_rollback_test": true,
+  "state_rollback_details": {
+    "original_param": {
+      "destination": "Rome",
+      "date": "June 1"
+    },
+    "corrected_param": {
+      "destination": "Milan",
+      "date": "June 3"
+    }
+  },
+  "latency_profile": "normal"
+}

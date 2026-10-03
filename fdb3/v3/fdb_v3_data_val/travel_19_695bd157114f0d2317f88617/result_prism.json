@@ -1,0 +1,631 @@
+{
+  "pid": "695bd157114f0d2317f88617",
+  "example_id": "travel_19",
+  "category": "travel_identity",
+  "title": "Double Destination + Date Correction",
+  "provider": "prism",
+  "evaluated_at": "2026-10-03T18:10:12.494214",
+  "inference_time_s": 58.62,
+  "room_name": "eval-99306bd5",
+  "stream_start_time": 1791031221.0039256,
+  "input_transcript": "Okay, I want to look for flights to Rome. No, wait, I changed my mind. Let's do Milan instead. And I was thinking June 1st. Well, wait, but actually June 3rd works better for me. Sorry about that. Thank you very much for your time and I will see you in the next video.",
+  "input_asr_chunks": [
+    {
+      "text": "Okay,",
+      "timestamp": [
+        0.0,
+        1.76
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        1.76,
+        1.82
+      ]
+    },
+    {
+      "text": "want",
+      "timestamp": [
+        1.82,
+        1.92
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        1.92,
+        2.0
+      ]
+    },
+    {
+      "text": "look",
+      "timestamp": [
+        2.0,
+        2.12
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        2.12,
+        2.3
+      ]
+    },
+    {
+      "text": "flights",
+      "timestamp": [
+        2.3,
+        2.62
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        2.62,
+        3.0
+      ]
+    },
+    {
+      "text": "Rome.",
+      "timestamp": [
+        3.0,
+        3.98
+      ]
+    },
+    {
+      "text": "No,",
+      "timestamp": [
+        4.56,
+        4.66
+      ]
+    },
+    {
+      "text": "wait,",
+      "timestamp": [
+        4.66,
+        4.98
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        4.98,
+        5.12
+      ]
+    },
+    {
+      "text": "changed",
+      "timestamp": [
+        5.12,
+        5.26
+      ]
+    },
+    {
+      "text": "my",
+      "timestamp": [
+        5.26,
+        5.48
+      ]
+    },
+    {
+      "text": "mind.",
+      "timestamp": [
+        5.48,
+        5.78
+      ]
+    },
+    {
+      "text": "Let's",
+      "timestamp": [
+        5.92,
+        6.02
+      ]
+    },
+    {
+      "text": "do",
+      "timestamp": [
+        6.02,
+        6.14
+      ]
+    },
+    {
+      "text": "Milan",
+      "timestamp": [
+        6.14,
+        6.32
+      ]
+    },
+    {
+      "text": "instead.",
+      "timestamp": [
+        6.32,
+        8.26
+      ]
+    },
+    {
+      "text": "And",
+      "timestamp": [
+        8.64,
+        8.78
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        8.78,
+        8.84
+      ]
+    },
+    {
+      "text": "was",
+      "timestamp": [
+        8.84,
+        8.94
+      ]
+    },
+    {
+      "text": "thinking",
+      "timestamp": [
+        8.94,
+        9.14
+      ]
+    },
+    {
+      "text": "June",
+      "timestamp": [
+        9.14,
+        9.56
+      ]
+    },
+    {
+      "text": "1st.",
+      "timestamp": [
+        9.56,
+        10.64
+      ]
+    },
+    {
+      "text": "Well,",
+      "timestamp": [
+        11.56,
+        11.68
+      ]
+    },
+    {
+      "text": "wait,",
+      "timestamp": [
+        11.68,
+        12.0
+      ]
+    },
+    {
+      "text": "but",
+      "timestamp": [
+        12.0,
+        12.2
+      ]
+    },
+    {
+      "text": "actually",
+      "timestamp": [
+        12.2,
+        12.68
+      ]
+    },
+    {
+      "text": "June",
+      "timestamp": [
+        12.68,
+        13.16
+      ]
+    },
+    {
+      "text": "3rd",
+      "timestamp": [
+        13.16,
+        13.96
+      ]
+    },
+    {
+      "text": "works",
+      "timestamp": [
+        13.96,
+        14.52
+      ]
+    },
+    {
+      "text": "better",
+      "timestamp": [
+        14.52,
+        14.74
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        14.74,
+        15.06
+      ]
+    },
+    {
+      "text": "me.",
+      "timestamp": [
+        15.06,
+        15.72
+      ]
+    },
+    {
+      "text": "Sorry",
+      "timestamp": [
+        16.46,
+        16.46
+      ]
+    },
+    {
+      "text": "about",
+      "timestamp": [
+        16.46,
+        16.66
+      ]
+    },
+    {
+      "text": "that.",
+      "timestamp": [
+        16.66,
+        17.5
+      ]
+    },
+    {
+      "text": "Thank",
+      "timestamp": [
+        30.0,
+        48.02
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        48.02,
+        48.02
+      ]
+    },
+    {
+      "text": "very",
+      "timestamp": [
+        48.02,
+        49.12
+      ]
+    },
+    {
+      "text": "much",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "your",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "time",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "will",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "see",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "in",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "next",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "video.",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    }
+  ],
+  "user_speech_end_rel": 17.5,
+  "latency": {
+    "input_duration_s": 49.14,
+    "output_duration_s": 49.14,
+    "first_speech_s": 35.75
+  },
+  "user_done_unix": 1791031238.5039256,
+  "search_latency_breakdown": {
+    "room": "eval-99306bd5",
+    "tool": "Search Tool",
+    "reasoning": 26.283,
+    "execution": 0.751,
+    "synthesis": 1.116,
+    "total": 28.15,
+    "agent_start_at": 1791031256.6045802
+  },
+  "absolute_total_latency": 18.101,
+  "transcript": "Thank you for watching, and I'll see you in the next video. Searching for flights to Milan on June 3rd, I found one flight, flight FL123, for $450.",
+  "asr_chunks": [
+    {
+      "text": "Thank",
+      "timestamp": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "watching,",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "I'll",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "see",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "in",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "next",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "video.",
+      "timestamp": [
+        25.0,
+        25.0
+      ]
+    },
+    {
+      "text": "Searching",
+      "timestamp": [
+        30.0,
+        36.14
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        36.14,
+        36.32
+      ]
+    },
+    {
+      "text": "flights",
+      "timestamp": [
+        36.32,
+        36.52
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        36.52,
+        36.88
+      ]
+    },
+    {
+      "text": "Milan",
+      "timestamp": [
+        36.88,
+        36.98
+      ]
+    },
+    {
+      "text": "on",
+      "timestamp": [
+        36.98,
+        37.42
+      ]
+    },
+    {
+      "text": "June",
+      "timestamp": [
+        37.42,
+        37.62
+      ]
+    },
+    {
+      "text": "3rd,",
+      "timestamp": [
+        37.62,
+        38.4
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        38.4,
+        38.58
+      ]
+    },
+    {
+      "text": "found",
+      "timestamp": [
+        38.58,
+        38.8
+      ]
+    },
+    {
+      "text": "one",
+      "timestamp": [
+        38.8,
+        39.08
+      ]
+    },
+    {
+      "text": "flight,",
+      "timestamp": [
+        39.08,
+        39.68
+      ]
+    },
+    {
+      "text": "flight",
+      "timestamp": [
+        39.68,
+        39.9
+      ]
+    },
+    {
+      "text": "FL123,",
+      "timestamp": [
+        39.9,
+        41.38
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        41.38,
+        41.6
+      ]
+    },
+    {
+      "text": "$450.",
+      "timestamp": [
+        41.6,
+        43.62
+      ]
+    }
+  ],
+  "perceived_total_latency": -17.5,
+  "audio_agent_speech_start": 0.0,
+  "actual_tool_calls": [
+    {
+      "function": "search_flights",
+      "args": {
+        "destination": "Milan",
+        "date": "June 3"
+      },
+      "timestamp_start": 31.47,
+      "timestamp_end": 32.59
+    },
+    {
+      "function": "search_flights",
+      "args": {
+        "destination": "Milan",
+        "date": "June 3"
+      },
+      "timestamp_start": 33.73,
+      "timestamp_end": 34.48
+    }
+  ],
+  "status": "completed"
+}

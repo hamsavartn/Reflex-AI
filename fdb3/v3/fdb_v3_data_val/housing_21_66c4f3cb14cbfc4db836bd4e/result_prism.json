@@ -1,0 +1,1000 @@
+{
+  "pid": "66c4f3cb14cbfc4db836bd4e",
+  "example_id": "housing_21",
+  "category": "housing_location",
+  "title": "Multi-Correction Across Statements",
+  "provider": "prism",
+  "evaluated_at": "2026-10-03T18:06:17.016594",
+  "inference_time_s": 60.12,
+  "room_name": "eval-7091169b",
+  "stream_start_time": 1791030986.5251522,
+  "input_transcript": "Well, so you know, I want to search for a place with two bedrooms, actually, I meant three bedrooms. We decided we need a home office, also check the transit time to the train station, actually I'd rather walk, so make that walking time. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right.",
+  "input_asr_chunks": [
+    {
+      "text": "Well,",
+      "timestamp": [
+        0.0,
+        1.84
+      ]
+    },
+    {
+      "text": "so",
+      "timestamp": [
+        1.84,
+        2.3
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        2.3,
+        2.46
+      ]
+    },
+    {
+      "text": "know,",
+      "timestamp": [
+        2.46,
+        3.0
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        3.0,
+        3.38
+      ]
+    },
+    {
+      "text": "want",
+      "timestamp": [
+        3.38,
+        3.74
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        3.74,
+        3.88
+      ]
+    },
+    {
+      "text": "search",
+      "timestamp": [
+        3.88,
+        4.08
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        4.08,
+        4.34
+      ]
+    },
+    {
+      "text": "a",
+      "timestamp": [
+        4.34,
+        4.44
+      ]
+    },
+    {
+      "text": "place",
+      "timestamp": [
+        4.44,
+        4.7
+      ]
+    },
+    {
+      "text": "with",
+      "timestamp": [
+        4.7,
+        4.92
+      ]
+    },
+    {
+      "text": "two",
+      "timestamp": [
+        4.92,
+        5.06
+      ]
+    },
+    {
+      "text": "bedrooms,",
+      "timestamp": [
+        5.06,
+        5.7
+      ]
+    },
+    {
+      "text": "actually,",
+      "timestamp": [
+        5.7,
+        7.28
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        7.28,
+        7.58
+      ]
+    },
+    {
+      "text": "meant",
+      "timestamp": [
+        7.58,
+        7.74
+      ]
+    },
+    {
+      "text": "three",
+      "timestamp": [
+        8.38,
+        8.38
+      ]
+    },
+    {
+      "text": "bedrooms.",
+      "timestamp": [
+        8.38,
+        9.26
+      ]
+    },
+    {
+      "text": "We",
+      "timestamp": [
+        9.38,
+        9.38
+      ]
+    },
+    {
+      "text": "decided",
+      "timestamp": [
+        9.38,
+        9.52
+      ]
+    },
+    {
+      "text": "we",
+      "timestamp": [
+        9.52,
+        9.92
+      ]
+    },
+    {
+      "text": "need",
+      "timestamp": [
+        9.92,
+        10.12
+      ]
+    },
+    {
+      "text": "a",
+      "timestamp": [
+        10.12,
+        10.28
+      ]
+    },
+    {
+      "text": "home",
+      "timestamp": [
+        10.28,
+        10.58
+      ]
+    },
+    {
+      "text": "office,",
+      "timestamp": [
+        10.58,
+        11.68
+      ]
+    },
+    {
+      "text": "also",
+      "timestamp": [
+        11.68,
+        12.0
+      ]
+    },
+    {
+      "text": "check",
+      "timestamp": [
+        12.0,
+        12.26
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        12.26,
+        12.56
+      ]
+    },
+    {
+      "text": "transit",
+      "timestamp": [
+        12.56,
+        13.08
+      ]
+    },
+    {
+      "text": "time",
+      "timestamp": [
+        13.08,
+        13.42
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        13.42,
+        13.64
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        13.64,
+        13.74
+      ]
+    },
+    {
+      "text": "train",
+      "timestamp": [
+        13.74,
+        13.92
+      ]
+    },
+    {
+      "text": "station,",
+      "timestamp": [
+        13.92,
+        14.56
+      ]
+    },
+    {
+      "text": "actually",
+      "timestamp": [
+        14.56,
+        15.34
+      ]
+    },
+    {
+      "text": "I'd",
+      "timestamp": [
+        15.48,
+        15.78
+      ]
+    },
+    {
+      "text": "rather",
+      "timestamp": [
+        15.78,
+        15.94
+      ]
+    },
+    {
+      "text": "walk,",
+      "timestamp": [
+        15.94,
+        16.42
+      ]
+    },
+    {
+      "text": "so",
+      "timestamp": [
+        16.42,
+        16.56
+      ]
+    },
+    {
+      "text": "make",
+      "timestamp": [
+        16.56,
+        16.74
+      ]
+    },
+    {
+      "text": "that",
+      "timestamp": [
+        16.74,
+        17.08
+      ]
+    },
+    {
+      "text": "walking",
+      "timestamp": [
+        17.08,
+        18.26
+      ]
+    },
+    {
+      "text": "time.",
+      "timestamp": [
+        18.26,
+        20.52
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        45.48,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "All",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    },
+    {
+      "text": "right.",
+      "timestamp": [
+        49.7,
+        49.7
+      ]
+    }
+  ],
+  "user_speech_end_rel": 20.52,
+  "latency": {
+    "input_duration_s": 49.725,
+    "output_duration_s": 49.725,
+    "first_speech_s": 40.25
+  },
+  "user_done_unix": 1791031007.0451522,
+  "search_latency_breakdown": {
+    "room": "eval-7091169b",
+    "tool": "Search Tool",
+    "reasoning": 8.847,
+    "execution": 0.118,
+    "synthesis": 2.1,
+    "total": 11.065,
+    "agent_start_at": 1791031026.721354
+  },
+  "absolute_total_latency": 19.676,
+  "transcript": "Thank you for watching, and I'll see you in the next video. I've updated the bedroom filter to 3. To check the walking time to the train station, I'll need your current origin address.",
+  "asr_chunks": [
+    {
+      "text": "Thank",
+      "timestamp": [
+        0.0,
+        26.72
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "watching,",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "I'll",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "see",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "in",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "next",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "video.",
+      "timestamp": [
+        26.72,
+        26.72
+      ]
+    },
+    {
+      "text": "I've",
+      "timestamp": [
+        30.0,
+        40.42
+      ]
+    },
+    {
+      "text": "updated",
+      "timestamp": [
+        40.42,
+        40.76
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        40.76,
+        41.0
+      ]
+    },
+    {
+      "text": "bedroom",
+      "timestamp": [
+        41.0,
+        41.26
+      ]
+    },
+    {
+      "text": "filter",
+      "timestamp": [
+        41.26,
+        41.54
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        41.54,
+        41.88
+      ]
+    },
+    {
+      "text": "3.",
+      "timestamp": [
+        41.88,
+        42.66
+      ]
+    },
+    {
+      "text": "To",
+      "timestamp": [
+        42.9,
+        42.9
+      ]
+    },
+    {
+      "text": "check",
+      "timestamp": [
+        42.9,
+        43.04
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        43.04,
+        43.22
+      ]
+    },
+    {
+      "text": "walking",
+      "timestamp": [
+        43.22,
+        43.48
+      ]
+    },
+    {
+      "text": "time",
+      "timestamp": [
+        43.48,
+        43.76
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        43.76,
+        43.96
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        43.96,
+        44.06
+      ]
+    },
+    {
+      "text": "train",
+      "timestamp": [
+        44.06,
+        44.22
+      ]
+    },
+    {
+      "text": "station,",
+      "timestamp": [
+        44.22,
+        44.92
+      ]
+    },
+    {
+      "text": "I'll",
+      "timestamp": [
+        44.92,
+        45.06
+      ]
+    },
+    {
+      "text": "need",
+      "timestamp": [
+        45.06,
+        45.24
+      ]
+    },
+    {
+      "text": "your",
+      "timestamp": [
+        45.24,
+        45.4
+      ]
+    },
+    {
+      "text": "current",
+      "timestamp": [
+        45.4,
+        45.72
+      ]
+    },
+    {
+      "text": "origin",
+      "timestamp": [
+        45.72,
+        45.88
+      ]
+    },
+    {
+      "text": "address.",
+      "timestamp": [
+        45.88,
+        47.08
+      ]
+    }
+  ],
+  "perceived_total_latency": -20.52,
+  "audio_agent_speech_start": 0.0,
+  "actual_tool_calls": [
+    {
+      "function": "update_search_filter",
+      "args": {
+        "filter_name": "bedrooms",
+        "value": "3"
+      },
+      "timestamp_start": 37.98,
+      "timestamp_end": 38.1
+    }
+  ],
+  "status": "completed"
+}

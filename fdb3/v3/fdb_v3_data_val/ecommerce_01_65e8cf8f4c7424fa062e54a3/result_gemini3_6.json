@@ -1,0 +1,354 @@
+{
+  "pid": "65e8cf8f4c7424fa062e54a3",
+  "example_id": "ecommerce_01",
+  "category": "ecommerce_support",
+  "title": "Simple Order Tracking",
+  "provider": "gemini3_6",
+  "evaluated_at": "2026-09-30T16:54:46.935934",
+  "inference_time_s": 54.5,
+  "room_name": "eval-60af6ae0",
+  "stream_start_time": 1790787292.462383,
+  "input_transcript": "Like, uh, you know, well, I ordered something last week and um, I haven't received it yet. Could you track it for me? The order ID is A B C one two three. What's that already? Great idea. Rocky cheek, you want to go to the order.",
+  "input_asr_chunks": [
+    {
+      "text": "Like,",
+      "timestamp": [
+        1.2,
+        1.52
+      ]
+    },
+    {
+      "text": "uh,",
+      "timestamp": [
+        2.08,
+        2.32
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        2.72,
+        3.04
+      ]
+    },
+    {
+      "text": "know,",
+      "timestamp": [
+        3.04,
+        3.36
+      ]
+    },
+    {
+      "text": "well,",
+      "timestamp": [
+        3.68,
+        3.84
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        4.0,
+        4.16
+      ]
+    },
+    {
+      "text": "ordered",
+      "timestamp": [
+        4.16,
+        4.8
+      ]
+    },
+    {
+      "text": "something",
+      "timestamp": [
+        4.8,
+        5.12
+      ]
+    },
+    {
+      "text": "last",
+      "timestamp": [
+        5.12,
+        5.36
+      ]
+    },
+    {
+      "text": "week",
+      "timestamp": [
+        5.36,
+        5.84
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        6.08,
+        6.4
+      ]
+    },
+    {
+      "text": "um,",
+      "timestamp": [
+        6.72,
+        7.04
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        7.28,
+        7.5200000000000005
+      ]
+    },
+    {
+      "text": "haven't",
+      "timestamp": [
+        7.5200000000000005,
+        7.84
+      ]
+    },
+    {
+      "text": "received",
+      "timestamp": [
+        7.84,
+        8.32
+      ]
+    },
+    {
+      "text": "it",
+      "timestamp": [
+        8.32,
+        8.48
+      ]
+    },
+    {
+      "text": "yet.",
+      "timestamp": [
+        8.48,
+        8.64
+      ]
+    },
+    {
+      "text": "Could",
+      "timestamp": [
+        8.88,
+        9.040000000000001
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        9.040000000000001,
+        9.200000000000001
+      ]
+    },
+    {
+      "text": "track",
+      "timestamp": [
+        9.200000000000001,
+        9.52
+      ]
+    },
+    {
+      "text": "it",
+      "timestamp": [
+        9.52,
+        9.68
+      ]
+    },
+    {
+      "text": "for",
+      "timestamp": [
+        9.68,
+        9.92
+      ]
+    },
+    {
+      "text": "me?",
+      "timestamp": [
+        9.92,
+        10.16
+      ]
+    },
+    {
+      "text": "The",
+      "timestamp": [
+        10.48,
+        10.64
+      ]
+    },
+    {
+      "text": "order",
+      "timestamp": [
+        10.64,
+        11.120000000000001
+      ]
+    },
+    {
+      "text": "ID",
+      "timestamp": [
+        11.120000000000001,
+        11.68
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        11.68,
+        12.0
+      ]
+    },
+    {
+      "text": "A",
+      "timestamp": [
+        12.0,
+        12.32
+      ]
+    },
+    {
+      "text": "B",
+      "timestamp": [
+        12.64,
+        12.88
+      ]
+    },
+    {
+      "text": "C",
+      "timestamp": [
+        13.200000000000001,
+        13.44
+      ]
+    },
+    {
+      "text": "one",
+      "timestamp": [
+        14.0,
+        14.24
+      ]
+    },
+    {
+      "text": "two",
+      "timestamp": [
+        14.56,
+        14.8
+      ]
+    },
+    {
+      "text": "three.",
+      "timestamp": [
+        15.040000000000001,
+        15.280000000000001
+      ]
+    },
+    {
+      "text": "What's",
+      "timestamp": [
+        36.96,
+        37.28
+      ]
+    },
+    {
+      "text": "that",
+      "timestamp": [
+        37.36,
+        37.44
+      ]
+    },
+    {
+      "text": "already?",
+      "timestamp": [
+        38.0,
+        38.24
+      ]
+    },
+    {
+      "text": "Great",
+      "timestamp": [
+        40.08,
+        40.32
+      ]
+    },
+    {
+      "text": "idea.",
+      "timestamp": [
+        40.4,
+        40.72
+      ]
+    },
+    {
+      "text": "Rocky",
+      "timestamp": [
+        41.2,
+        41.68
+      ]
+    },
+    {
+      "text": "cheek,",
+      "timestamp": [
+        41.92,
+        42.24
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        42.4,
+        42.480000000000004
+      ]
+    },
+    {
+      "text": "want",
+      "timestamp": [
+        42.64,
+        42.72
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        42.88,
+        42.96
+      ]
+    },
+    {
+      "text": "go",
+      "timestamp": [
+        43.12,
+        43.2
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        43.76,
+        43.84
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        43.84,
+        43.92
+      ]
+    },
+    {
+      "text": "order.",
+      "timestamp": [
+        43.92,
+        44.08
+      ]
+    }
+  ],
+  "user_speech_end_rel": 15.280000000000001,
+  "latency": {
+    "input_duration_s": 45.84,
+    "output_duration_s": 45.84,
+    "first_speech_s": 45.84
+  },
+  "user_done_unix": 1790787307.742383,
+  "transcript": "",
+  "asr_chunks": [],
+  "actual_tool_calls": [],
+  "status": "completed"
+}
