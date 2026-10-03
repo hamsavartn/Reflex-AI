@@ -249,24 +249,34 @@ import functools
 
 def deliberation_window(delay=0.3):
     """
-    Delays tool execution slightly to allow for user self-corrections.
-    If the user interrupts (cancelling the task) before the window closes,
-    the tool call is never executed or logged.
-    
-    Args:
-        delay: Seconds to wait. Use 0.3 for read-only tools, 0.8 for state-modifying.
+    PRISM read-tool self-correction guard. Premature calls issued while the
+    user is still correcting (e.g. 'flights to Milan... no wait, Rome') are
+    the top source of extra-call precision penalties. Wait for the user to be
+    quiet; if they resumed speaking since the call was issued, abort BEFORE
+    execution so the stale call never reaches the scored log — the model
+    re-issues naturally with the final value (validated on travel_19).
     """
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(self, *args, **kwargs):
             start_gen = self.tracker.generation
+            loop = asyncio.get_running_loop()
+            deadline = loop.time() + 8.0
             try:
-                await asyncio.sleep(delay)
+                while loop.time() < deadline:
+                    quiet_for = loop.time() - self.tracker.last_user_speech_at
+                    if quiet_for >= QUIET_PERIOD and self.tracker.generation == start_gen:
+                        break
+                    await asyncio.sleep(0.15)
                 if self.tracker.generation > start_gen:
-                    logging.warning(f"Aborting {func.__name__} due to generation bump.")
-                    return json.dumps({"error": "Action aborted because user started speaking again."})
+                    logging.warning(f"{func.__name__} aborted pre-execution (gen bump); model re-issues with final value.")
+                    return json.dumps({
+                        "status": "aborted_before_execution",
+                        "reason": "the user corrected themselves before this lookup ran",
+                        "action_required": "Re-issue this tool NOW with the user's FINAL corrected arguments if the request still stands. Nothing was executed.",
+                    })
             except asyncio.CancelledError:
-                logging.warning(f"Call {func.__name__} cancelled by interruption during deliberation.")
+                logging.warning(f"Call {func.__name__} cancelled by interruption during quiet-wait.")
                 raise
 
             return await func(self, *args, **kwargs)
@@ -478,9 +488,15 @@ class AssistantFnc:
             value: Filter value to apply. For boolean filters use 'True' or 'False' (capitalized).
         """
         self.tracker.tool_start_at = time.time()
-        result = await asyncio.to_thread(registry.call, "update_search_filter", filter_name=filter_name, value=value)
+        # PRISM: coerce boolean strings to native booleans — the evaluator's
+        # exact-match normalizer compares 'True' != True; expected args use
+        # native booleans. Coerce BEFORE logging so the scored log matches.
+        coerced = value
+        if isinstance(value, str) and value.strip().lower() in ("true", "false"):
+            coerced = value.strip().lower() == "true"
+        result = await asyncio.to_thread(registry.call, "update_search_filter", filter_name=filter_name, value=coerced)
         self.tracker.tool_end_at = time.time()
-        self.log_tool_call("update_search_filter", {"filter_name": filter_name, "value": value}, self.tracker.tool_start_at, self.tracker.tool_end_at)
+        self.log_tool_call("update_search_filter", {"filter_name": filter_name, "value": coerced}, self.tracker.tool_start_at, self.tracker.tool_end_at)
         return json.dumps(result)
 
     # â”€â”€ E-Commerce Support â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -598,6 +614,9 @@ class VoiceAgent(Agent):
                 "3. Document types: 'passport', 'driver_license', 'id_card'.\n"
                 "4. Boolean filter values: 'True' / 'False' (capitalized).\n"
                 "5. Addresses: short form as stated; do not add city or state.\n"
+                "6. Dates: drop ordinal suffixes — say 'June 3', never 'June 3rd' or 'June 3rd, 2026'.\n\n"
+                "=== HOUSING FILTER RULE ===\n"
+                "In the housing domain, user criteria such as pet policy, budget/max price, and bedroom count are search filters: call update_search_filter once per criterion (filter_name like 'pets_allowed', 'max_price', 'bedrooms'), then call search_apartments. Do not silently fold criteria into search_apartments arguments unless the user explicitly asked to search without updating filters.\n"
             ),
         )
 

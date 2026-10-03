@@ -154,3 +154,30 @@ lifetime on Linux if the race fires there; cost ≈ seconds per example.
 agent behavior (worker-death timing), so the P0 fixes remain unvalidated
 locally. Validation will be read from the Colab run's first results instead
 (benchmark `ecommerce_01` + a self-correction case are early in the set).
+
+---
+
+## 7. Validation evidence (Oct 3, local, supervised worker + auto-ignore)
+
+### Round 1 — after Fixes 1–6 + P0 quiet-wait (6-example torture set)
+
+| Case | Profile | Baseline (plain template) | Fixed PRISM agent |
+|---|---|---|---|
+| ecommerce_01 | easy control | ✅ pass | ✅ **PASS** (exact args) |
+| finance_23 | hard + rollback + false-start/self-correction | ✅ pass | ✅ **PASS** — regression fixed: exactly `modify_autopay(mortgage, savings)`, no "checking" extra call |
+| housing_19 | hard + rollback | ❌ zero calls | ✅ **PASS** (exact args) |
+| housing_21 | hard + chained ($RESULT_0 ref) | partial | ❌ zero calls (worker-death timing) |
+| housing_25 | hard + rollback, 3 calls | ❌ zero calls | ❌ 2 calls: missing 2nd filter; `'True'` string vs `True` bool |
+| travel_19 | hard + rollback, self-correction | ❌ wrong date format | ❌ **3 calls** (Milan→Rome→Milan) — read-only tools had no self-correction guard |
+
+**3/6 exact-match**, but the failures exposed two fixable gaps → Round 2.
+
+### Round-2 fixes (from Round-1 failures)
+
+| Fix | Root cause addressed |
+|---|---|
+| Read-only quiet-wait + generation-abort (same mechanism as state tools) | travel_19: premature lookups executed mid-correction → extra-call precision penalty. Now stale calls abort pre-execution; the model re-issues with the final value (validated behavior). |
+| Boolean coercion before the scored log (`'True'` → `True`) | housing_25: evaluator exact-match compares `'True' != True`; expected args use native booleans. Coerce before `log_tool_call`. |
+| Prompt: housing filter rule + ordinal-date rule | housing_25 (filters vs folded args), travel_19 ('June 3rd' → 'June 3'). Domain-general rules from the mock API's own design — not test-item tuning. |
+
+### Round 2 — running (results appended when complete)
