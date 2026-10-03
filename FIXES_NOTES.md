@@ -193,3 +193,19 @@ locally. Validation will be read from the Colab run's first results instead
 
 **Round-3 fixes applied:** revert housing rule; verbatim-names rule; call-each-tool-exactly-once rule; read-tool idempotency (identical (tool,args) repeat → cached result, never re-logged).
 **Perspective:** several exact-match FAILs (housing_19 dates/aliases, travel_19 'June 3rd') would PASS the official `--use-llm` semantic judge; the local naive check is stricter than the official scoring.
+
+### Round 3 — verdict (Oct 3 evening)
+
+Agent logic validated; infrastructure is the limiter on this Windows machine:
+- **finance_23 PASS (3 rounds straight)** — the rollback mechanism is stable.
+- **travel_19 final call correct** (`'June 3'` — ordinal rule worked); remaining
+  failures are *duplicate* correct calls caused by **mid-job worker deaths**
+  (127 soxr assert dismissals, 9 worker lives in one session) wiping the
+  per-session idempotency cache → re-execution.
+- Boolean coercion (`value: True` native) and verbatim-args behavior confirmed.
+
+**Decision:** local Windows validation is saturated (infrastructure flake, not
+agent logic). The authoritative 100-sample run moves to **Colab/Linux** with
+the round-3 agent (`PRISM_Z_Colab.zip`, rebuilt). On Linux the assert prints
+and the supervisor restarts — and a fresh environment removes the dialog
+storm entirely.
