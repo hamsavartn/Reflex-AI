@@ -99,12 +99,20 @@ class LatencyTracker:
         return self.generation
 
     def reset(self):
-        # We preserve generation and state_registry across resets
+        # Per-turn reset: preserve ALL session-scoped recovery state
         gen = self.generation
         reg = self.state_registry
+        rc = self.read_cache
+        lt = self.last_transcript
+        ak = self.aborted_state_keys
+        lus = self.last_user_speech_at
         self.__init__()
         self.generation = gen
         self.state_registry = reg
+        self.read_cache = rc
+        self.last_transcript = lt
+        self.aborted_state_keys = ak
+        self.last_user_speech_at = lus
 
     def log_breakdown(self, tool_name="", room_name="unknown"):
         if not self.user_done_at or not self.agent_start_at or not self.tool_start_at:
