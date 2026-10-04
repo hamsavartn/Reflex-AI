@@ -4,10 +4,10 @@
   "category": "housing_location",
   "title": "Double Commute Correction",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:20:03.149544",
-  "inference_time_s": 51.88,
-  "room_name": "eval-c6e86773",
-  "stream_start_time": 1791031810.7573552,
+  "evaluated_at": "2026-10-05T01:02:08.896141",
+  "inference_time_s": 53.56,
+  "room_name": "eval-bfb2e726",
+  "stream_start_time": 1791142337.8819826,
   "input_transcript": "Well, uh, calculate the transit time to the office. Wait, no, um, I wouldn't be going to the office I'd be going to the gym and actually now they think about it. I drive there and not take transit So make a drive into the gym from my house Thank you very much.",
   "input_asr_chunks": [
     {
@@ -386,20 +386,20 @@
   "latency": {
     "input_duration_s": 43.44,
     "output_duration_s": 43.44,
-    "first_speech_s": 34.45
+    "first_speech_s": 33.75
   },
-  "user_done_unix": 1791031823.3373551,
+  "user_done_unix": 1791142350.4619825,
   "search_latency_breakdown": {
-    "room": "eval-c6e86773",
+    "room": "eval-bfb2e726",
     "tool": "Search Tool",
-    "reasoning": 17.268,
-    "execution": 0.331,
-    "synthesis": 3.033,
-    "total": 20.632,
-    "agent_start_at": 1791031844.3840866
+    "reasoning": 15.351,
+    "execution": 0.4,
+    "synthesis": 2.489,
+    "total": 18.239,
+    "agent_start_at": 1791142370.2567837
   },
-  "absolute_total_latency": 21.047,
-  "transcript": "Thank you for watching, and I'll see you in the next video. It would be a 25-minute drive to the gym from your house.",
+  "absolute_total_latency": 19.795,
+  "transcript": "Thank you for watching, and I'll see you in the next video. The driving commute to the gym from your house is 25 minutes.",
   "asr_chunks": [
     {
       "text": "Thank",
@@ -486,94 +486,87 @@
       ]
     },
     {
-      "text": "It",
+      "text": "The",
       "timestamp": [
         30.0,
-        33.5
+        30.66
       ]
     },
     {
-      "text": "would",
+      "text": "driving",
       "timestamp": [
-        33.5,
-        34.64
+        30.66,
+        34.08
       ]
     },
     {
-      "text": "be",
+      "text": "commute",
       "timestamp": [
-        34.64,
-        34.8
-      ]
-    },
-    {
-      "text": "a",
-      "timestamp": [
-        34.8,
-        35.02
-      ]
-    },
-    {
-      "text": "25",
-      "timestamp": [
-        35.02,
-        35.4
-      ]
-    },
-    {
-      "text": "-minute",
-      "timestamp": [
-        35.4,
-        35.8
-      ]
-    },
-    {
-      "text": "drive",
-      "timestamp": [
-        35.8,
-        36.04
+        34.08,
+        34.36
       ]
     },
     {
       "text": "to",
       "timestamp": [
-        36.04,
-        36.26
+        34.36,
+        34.58
       ]
     },
     {
       "text": "the",
       "timestamp": [
-        36.26,
-        36.36
+        34.58,
+        34.68
       ]
     },
     {
       "text": "gym",
       "timestamp": [
-        36.36,
-        36.5
+        34.68,
+        34.84
       ]
     },
     {
       "text": "from",
       "timestamp": [
-        36.5,
-        36.74
+        34.84,
+        35.06
       ]
     },
     {
       "text": "your",
       "timestamp": [
-        36.74,
-        36.88
+        35.06,
+        35.2
       ]
     },
     {
-      "text": "house.",
+      "text": "house",
       "timestamp": [
-        36.88,
-        37.78
+        35.2,
+        35.4
+      ]
+    },
+    {
+      "text": "is",
+      "timestamp": [
+        35.4,
+        35.58
+      ]
+    },
+    {
+      "text": "25",
+      "timestamp": [
+        35.58,
+        35.88
+      ]
+    },
+    {
+      "text": "minutes.",
+      "timestamp": [
+        35.88,
+        39.14
       ]
     }
   ],
@@ -583,12 +576,12 @@
     {
       "function": "calculate_commute",
       "args": {
-        "origin_address": "my inhouse",
-        "destination_address": "the gym",
+        "origin_address": "my house",
+        "destination_address": "gym",
         "mode": "driving"
       },
-      "timestamp_start": 30.26,
-      "timestamp_end": 30.59
+      "timestamp_start": 29.49,
+      "timestamp_end": 29.89
     }
   ],
   "status": "completed"

@@ -251,3 +251,14 @@ upgrade is in place; empirical tuning resumes when quota returns.
 - One conservative miss: abandoned-false-start rejection returned "ok"
   (fails open; costs precision only in that edge class). Accepted.
 - Colab bundle rebuilt with the gated agent (commit c296aec + this).
+
+## 10. FINAL AGENT FREEZE (Oct 5)
+
+Root cause (positional tool invocations dropped by wrappers) fixed via
+`inspect.signature().bind()` in both decorators; live-validated end-to-end.
+Final torture-set validation: 4/6 exact on the hardest five + control
+(baseline-era code scored ~1/6 on the same set). Zero tool exceptions, zero
+handshake timeouts in the final run. Remaining 3 misses are model-behavior
+(filter-vs-search-arg disambiguation, chained-call completion) — judge-forgivable
+in part, and deliberately NOT prompt-tuned further to avoid the over-fitting trap.
+Agent frozen: fdb3/v3/prism_agent.py == colab/prism_colab/v3/prism_agent.py.

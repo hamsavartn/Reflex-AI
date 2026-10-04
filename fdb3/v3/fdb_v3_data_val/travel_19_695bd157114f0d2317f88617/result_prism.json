@@ -4,10 +4,10 @@
   "category": "travel_identity",
   "title": "Double Destination + Date Correction",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:10:12.494214",
-  "inference_time_s": 58.62,
-  "room_name": "eval-99306bd5",
-  "stream_start_time": 1791031221.0039256,
+  "evaluated_at": "2026-10-05T01:07:51.066262",
+  "inference_time_s": 60.63,
+  "room_name": "eval-97077cb2",
+  "stream_start_time": 1791142681.5093606,
   "input_transcript": "Okay, I want to look for flights to Rome. No, wait, I changed my mind. Let's do Milan instead. And I was thinking June 1st. Well, wait, but actually June 3rd works better for me. Sorry about that. Thank you very much for your time and I will see you in the next video.",
   "input_asr_chunks": [
     {
@@ -393,20 +393,20 @@
   "latency": {
     "input_duration_s": 49.14,
     "output_duration_s": 49.14,
-    "first_speech_s": 35.75
+    "first_speech_s": 41.75
   },
-  "user_done_unix": 1791031238.5039256,
+  "user_done_unix": 1791142699.0093606,
   "search_latency_breakdown": {
-    "room": "eval-99306bd5",
+    "room": "eval-97077cb2",
     "tool": "Search Tool",
-    "reasoning": 26.283,
-    "execution": 0.751,
-    "synthesis": 1.116,
-    "total": 28.15,
-    "agent_start_at": 1791031256.6045802
+    "reasoning": 27.391,
+    "execution": 0.47,
+    "synthesis": 1.291,
+    "total": 29.152,
+    "agent_start_at": 1791142722.5136533
   },
-  "absolute_total_latency": 18.101,
-  "transcript": "Thank you for watching, and I'll see you in the next video. Searching for flights to Milan on June 3rd, I found one flight, flight FL123, for $450.",
+  "absolute_total_latency": 23.504,
+  "transcript": "Thank you for watching, and I'll see you in the next video. Searching for flights to Milan on June 3rd, I found one flight, Flight FL123, with a price of $450. // // // // // // // // // // // // // // // // // // // // // // // // // // // //",
   "asr_chunks": [
     {
       "text": "Thank",
@@ -496,112 +496,329 @@
       "text": "Searching",
       "timestamp": [
         30.0,
-        36.14
+        42.04
       ]
     },
     {
       "text": "for",
       "timestamp": [
-        36.14,
-        36.32
+        42.04,
+        42.18
       ]
     },
     {
       "text": "flights",
       "timestamp": [
-        36.32,
-        36.52
+        42.18,
+        42.38
       ]
     },
     {
       "text": "to",
       "timestamp": [
-        36.52,
-        36.88
+        42.38,
+        42.68
       ]
     },
     {
       "text": "Milan",
       "timestamp": [
-        36.88,
-        36.98
+        42.68,
+        42.76
       ]
     },
     {
       "text": "on",
       "timestamp": [
-        36.98,
-        37.42
+        42.76,
+        43.18
       ]
     },
     {
       "text": "June",
       "timestamp": [
-        37.42,
-        37.62
+        43.18,
+        43.34
       ]
     },
     {
       "text": "3rd,",
       "timestamp": [
-        37.62,
-        38.4
+        43.34,
+        44.04
       ]
     },
     {
       "text": "I",
       "timestamp": [
-        38.4,
-        38.58
+        44.04,
+        44.14
       ]
     },
     {
       "text": "found",
       "timestamp": [
-        38.58,
-        38.8
+        44.14,
+        44.36
       ]
     },
     {
       "text": "one",
       "timestamp": [
-        38.8,
-        39.08
+        44.36,
+        44.6
       ]
     },
     {
       "text": "flight,",
       "timestamp": [
-        39.08,
-        39.68
+        44.6,
+        45.24
       ]
     },
     {
-      "text": "flight",
+      "text": "Flight",
       "timestamp": [
-        39.68,
-        39.9
+        45.24,
+        45.48
       ]
     },
     {
       "text": "FL123,",
       "timestamp": [
-        39.9,
-        41.38
+        45.48,
+        47.0
       ]
     },
     {
-      "text": "for",
+      "text": "with",
       "timestamp": [
-        41.38,
-        41.6
+        47.0,
+        47.06
+      ]
+    },
+    {
+      "text": "a",
+      "timestamp": [
+        47.06,
+        47.12
+      ]
+    },
+    {
+      "text": "price",
+      "timestamp": [
+        47.12,
+        47.32
+      ]
+    },
+    {
+      "text": "of",
+      "timestamp": [
+        47.4,
+        47.54
       ]
     },
     {
       "text": "$450.",
       "timestamp": [
-        41.6,
-        43.62
+        47.54,
+        47.8
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        48.9,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
+      ]
+    },
+    {
+      "text": "//",
+      "timestamp": [
+        49.12,
+        49.12
       ]
     }
   ],
@@ -614,17 +831,8 @@
         "destination": "Milan",
         "date": "June 3"
       },
-      "timestamp_start": 31.47,
-      "timestamp_end": 32.59
-    },
-    {
-      "function": "search_flights",
-      "args": {
-        "destination": "Milan",
-        "date": "June 3"
-      },
-      "timestamp_start": 33.73,
-      "timestamp_end": 34.48
+      "timestamp_start": 39.24,
+      "timestamp_end": 39.71
     }
   ],
   "status": "completed"

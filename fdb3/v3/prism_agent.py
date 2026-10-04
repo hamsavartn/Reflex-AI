@@ -614,6 +614,10 @@ class AssistantFnc:
             mode: Transport mode: 'driving', 'transit', 'walking'. Use 'driving' unless user specifies otherwise.
         """
         self.tracker.tool_start_at = time.time()
+        # PRISM: canonicalize mode to its enum — paraphrased values ('drive'
+        # for 'driving') would otherwise create near-duplicate scored calls.
+        _modes = ("driving", "transit", "walking", "bicycling")
+        mode = next((mv for mv in _modes if str(mode).lower().startswith(mv[:5])), mode)
         result = await asyncio.to_thread(registry.call, "calculate_commute", origin_address=origin_address, destination_address=destination_address, mode=mode)
         self.tracker.tool_end_at = time.time()
         self.log_tool_call("calculate_commute", {"origin_address": origin_address, "destination_address": destination_address, "mode": mode}, self.tracker.tool_start_at, self.tracker.tool_end_at)

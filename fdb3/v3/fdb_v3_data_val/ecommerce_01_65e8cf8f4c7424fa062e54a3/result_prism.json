@@ -4,10 +4,10 @@
   "category": "ecommerce_support",
   "title": "Simple Order Tracking",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:14:48.130386",
-  "inference_time_s": 56.47,
-  "room_name": "eval-a5ecc020",
-  "stream_start_time": 1791031497.2337718,
+  "evaluated_at": "2026-10-05T00:56:31.983777",
+  "inference_time_s": 69.84,
+  "room_name": "eval-4c4d8ec9",
+  "stream_start_time": 1791142008.4048076,
   "input_transcript": "Like, uh, you know, well, I ordered something last week and, um, I haven't received it yet. Could you track it for me? The order ID is A, B, C, 1, 2, 3. That is it, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look good, you look",
   "input_asr_chunks": [
     {
@@ -2591,216 +2591,210 @@
   "latency": {
     "input_duration_s": 45.84,
     "output_duration_s": 45.84,
-    "first_speech_s": 33.85
+    "first_speech_s": 45.84
   },
-  "user_done_unix": 1791031513.1537719,
-  "search_latency_breakdown": {
-    "room": "eval-a5ecc020",
-    "tool": "Search Tool",
-    "reasoning": 8.155,
-    "execution": 0.064,
-    "synthesis": 2.311,
-    "total": 10.529,
-    "agent_start_at": 1791031532.6100028
-  },
-  "absolute_total_latency": 19.456,
-  "transcript": "Thank you for watching, and I'll see you in the next video. Your order A, B, C, 1, 2, 3 is currently out for delivery.",
+  "user_done_unix": 1791142024.3248076,
+  "transcript": "Thank you so much for watching, and I'll see you in the next video. you you you you you you you you you you you you you you",
   "asr_chunks": [
     {
       "text": "Thank",
       "timestamp": [
         0.0,
-        24.14
+        24.06
       ]
     },
     {
       "text": "you",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
+      ]
+    },
+    {
+      "text": "so",
+      "timestamp": [
+        24.06,
+        24.06
+      ]
+    },
+    {
+      "text": "much",
+      "timestamp": [
+        24.06,
+        24.06
       ]
     },
     {
       "text": "for",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "watching,",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "and",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "I'll",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "see",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "you",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "in",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "the",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "next",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
       "text": "video.",
       "timestamp": [
-        24.14,
-        24.14
+        24.06,
+        24.06
       ]
     },
     {
-      "text": "Your",
+      "text": "you",
       "timestamp": [
         30.0,
-        33.9
+        30.22
       ]
     },
     {
-      "text": "order",
+      "text": "you",
       "timestamp": [
-        33.9,
-        34.24
+        31.38,
+        33.1
       ]
     },
     {
-      "text": "A,",
+      "text": "you",
       "timestamp": [
-        34.24,
-        34.44
+        33.46,
+        34.84
       ]
     },
     {
-      "text": "B,",
+      "text": "you",
       "timestamp": [
-        34.44,
-        34.68
+        35.84,
+        36.3
       ]
     },
     {
-      "text": "C,",
+      "text": "you",
       "timestamp": [
-        34.68,
-        34.74
+        38.22,
+        38.42
       ]
     },
     {
-      "text": "1,",
+      "text": "you",
       "timestamp": [
-        34.74,
-        34.96
+        40.42,
+        40.54
       ]
     },
     {
-      "text": "2,",
+      "text": "you",
       "timestamp": [
-        34.96,
-        35.08
+        42.66,
+        42.66
       ]
     },
     {
-      "text": "3",
+      "text": "you",
       "timestamp": [
-        35.08,
-        35.28
+        44.6,
+        44.6
       ]
     },
     {
-      "text": "is",
+      "text": "you",
       "timestamp": [
-        35.28,
-        35.58
+        45.76,
+        45.82
       ]
     },
     {
-      "text": "currently",
+      "text": "you",
       "timestamp": [
-        35.58,
-        36.0
+        45.82,
+        45.82
       ]
     },
     {
-      "text": "out",
+      "text": "you",
       "timestamp": [
-        36.0,
-        36.32
+        45.82,
+        45.82
       ]
     },
     {
-      "text": "for",
+      "text": "you",
       "timestamp": [
-        36.32,
-        36.46
+        45.82,
+        45.82
       ]
     },
     {
-      "text": "delivery.",
+      "text": "you",
       "timestamp": [
-        36.46,
-        39.36
+        45.82,
+        45.82
+      ]
+    },
+    {
+      "text": "you",
+      "timestamp": [
+        45.82,
+        45.82
       ]
     }
   ],
   "perceived_total_latency": -15.92,
   "audio_agent_speech_start": 0.0,
-  "actual_tool_calls": [
-    {
-      "function": "track_order",
-      "args": {
-        "order_id": "ABC123"
-      },
-      "timestamp_start": 33.0,
-      "timestamp_end": 33.07
-    },
-    {
-      "function": "track_order",
-      "args": {
-        "order_id": "ABC123"
-      },
-      "timestamp_start": 38.38,
-      "timestamp_end": 38.38
-    }
-  ],
+  "actual_tool_calls": [],
   "status": "completed"
 }

@@ -4,10 +4,10 @@
   "category": "housing_location",
   "title": "Multi-Correction Across Statements",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:06:17.016594",
-  "inference_time_s": 60.12,
-  "room_name": "eval-7091169b",
-  "stream_start_time": 1791030986.5251522,
+  "evaluated_at": "2026-10-05T01:03:39.273552",
+  "inference_time_s": 61.67,
+  "room_name": "eval-e882ce24",
+  "stream_start_time": 1791142429.7547886,
   "input_transcript": "Well, so you know, I want to search for a place with two bedrooms, actually, I meant three bedrooms. We decided we need a home office, also check the transit time to the train station, actually I'd rather walk, so make that walking time. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right. All right.",
   "input_asr_chunks": [
     {
@@ -729,257 +729,303 @@
   "latency": {
     "input_duration_s": 49.725,
     "output_duration_s": 49.725,
-    "first_speech_s": 40.25
+    "first_speech_s": 36.45
   },
-  "user_done_unix": 1791031007.0451522,
-  "search_latency_breakdown": {
-    "room": "eval-7091169b",
-    "tool": "Search Tool",
-    "reasoning": 8.847,
-    "execution": 0.118,
-    "synthesis": 2.1,
-    "total": 11.065,
-    "agent_start_at": 1791031026.721354
-  },
-  "absolute_total_latency": 19.676,
-  "transcript": "Thank you for watching, and I'll see you in the next video. I've updated the bedroom filter to 3. To check the walking time to the train station, I'll need your current origin address.",
+  "user_done_unix": 1791142450.2747886,
+  "transcript": "Thank you for watching, and I'll see you in the next video. I've updated your search filters to include three bedrooms and a home office. To calculate the walking time to the train station, I need your current location or starting address.",
   "asr_chunks": [
     {
       "text": "Thank",
       "timestamp": [
         0.0,
-        26.72
+        24.14
       ]
     },
     {
       "text": "you",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "for",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "watching,",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "and",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "I'll",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "see",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "you",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "in",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "the",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "next",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "video.",
       "timestamp": [
-        26.72,
-        26.72
+        24.14,
+        24.14
       ]
     },
     {
       "text": "I've",
       "timestamp": [
         30.0,
-        40.42
+        36.6
       ]
     },
     {
       "text": "updated",
       "timestamp": [
-        40.42,
-        40.76
-      ]
-    },
-    {
-      "text": "the",
-      "timestamp": [
-        40.76,
-        41.0
-      ]
-    },
-    {
-      "text": "bedroom",
-      "timestamp": [
-        41.0,
-        41.26
-      ]
-    },
-    {
-      "text": "filter",
-      "timestamp": [
-        41.26,
-        41.54
-      ]
-    },
-    {
-      "text": "to",
-      "timestamp": [
-        41.54,
-        41.88
-      ]
-    },
-    {
-      "text": "3.",
-      "timestamp": [
-        41.88,
-        42.66
-      ]
-    },
-    {
-      "text": "To",
-      "timestamp": [
-        42.9,
-        42.9
-      ]
-    },
-    {
-      "text": "check",
-      "timestamp": [
-        42.9,
-        43.04
-      ]
-    },
-    {
-      "text": "the",
-      "timestamp": [
-        43.04,
-        43.22
-      ]
-    },
-    {
-      "text": "walking",
-      "timestamp": [
-        43.22,
-        43.48
-      ]
-    },
-    {
-      "text": "time",
-      "timestamp": [
-        43.48,
-        43.76
-      ]
-    },
-    {
-      "text": "to",
-      "timestamp": [
-        43.76,
-        43.96
-      ]
-    },
-    {
-      "text": "the",
-      "timestamp": [
-        43.96,
-        44.06
-      ]
-    },
-    {
-      "text": "train",
-      "timestamp": [
-        44.06,
-        44.22
-      ]
-    },
-    {
-      "text": "station,",
-      "timestamp": [
-        44.22,
-        44.92
-      ]
-    },
-    {
-      "text": "I'll",
-      "timestamp": [
-        44.92,
-        45.06
-      ]
-    },
-    {
-      "text": "need",
-      "timestamp": [
-        45.06,
-        45.24
+        36.6,
+        36.92
       ]
     },
     {
       "text": "your",
       "timestamp": [
-        45.24,
-        45.4
+        36.92,
+        37.14
+      ]
+    },
+    {
+      "text": "search",
+      "timestamp": [
+        37.14,
+        37.3
+      ]
+    },
+    {
+      "text": "filters",
+      "timestamp": [
+        37.3,
+        37.58
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        37.58,
+        37.92
+      ]
+    },
+    {
+      "text": "include",
+      "timestamp": [
+        37.92,
+        38.06
+      ]
+    },
+    {
+      "text": "three",
+      "timestamp": [
+        38.06,
+        38.48
+      ]
+    },
+    {
+      "text": "bedrooms",
+      "timestamp": [
+        38.48,
+        38.78
+      ]
+    },
+    {
+      "text": "and",
+      "timestamp": [
+        38.78,
+        39.1
+      ]
+    },
+    {
+      "text": "a",
+      "timestamp": [
+        39.1,
+        39.18
+      ]
+    },
+    {
+      "text": "home",
+      "timestamp": [
+        39.18,
+        39.34
+      ]
+    },
+    {
+      "text": "office.",
+      "timestamp": [
+        39.34,
+        40.18
+      ]
+    },
+    {
+      "text": "To",
+      "timestamp": [
+        40.3,
+        40.3
+      ]
+    },
+    {
+      "text": "calculate",
+      "timestamp": [
+        40.3,
+        40.58
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        40.58,
+        40.94
+      ]
+    },
+    {
+      "text": "walking",
+      "timestamp": [
+        40.94,
+        41.18
+      ]
+    },
+    {
+      "text": "time",
+      "timestamp": [
+        41.18,
+        41.52
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        41.52,
+        41.7
+      ]
+    },
+    {
+      "text": "the",
+      "timestamp": [
+        41.7,
+        41.8
+      ]
+    },
+    {
+      "text": "train",
+      "timestamp": [
+        41.8,
+        41.96
+      ]
+    },
+    {
+      "text": "station,",
+      "timestamp": [
+        41.96,
+        42.66
+      ]
+    },
+    {
+      "text": "I",
+      "timestamp": [
+        42.66,
+        42.78
+      ]
+    },
+    {
+      "text": "need",
+      "timestamp": [
+        42.78,
+        42.96
+      ]
+    },
+    {
+      "text": "your",
+      "timestamp": [
+        42.96,
+        43.14
       ]
     },
     {
       "text": "current",
       "timestamp": [
-        45.4,
-        45.72
+        43.14,
+        43.32
       ]
     },
     {
-      "text": "origin",
+      "text": "location",
       "timestamp": [
-        45.72,
-        45.88
+        43.32,
+        43.78
+      ]
+    },
+    {
+      "text": "or",
+      "timestamp": [
+        43.78,
+        44.02
+      ]
+    },
+    {
+      "text": "starting",
+      "timestamp": [
+        44.02,
+        44.28
       ]
     },
     {
       "text": "address.",
       "timestamp": [
-        45.88,
-        47.08
+        44.4,
+        49.0
       ]
     }
   ],
@@ -992,8 +1038,17 @@
         "filter_name": "bedrooms",
         "value": "3"
       },
-      "timestamp_start": 37.98,
-      "timestamp_end": 38.1
+      "timestamp_start": 47.4,
+      "timestamp_end": 47.55
+    },
+    {
+      "function": "update_search_filter",
+      "args": {
+        "filter_name": "home_office",
+        "value": true
+      },
+      "timestamp_start": 56.21,
+      "timestamp_end": 56.33
     }
   ],
   "status": "completed"

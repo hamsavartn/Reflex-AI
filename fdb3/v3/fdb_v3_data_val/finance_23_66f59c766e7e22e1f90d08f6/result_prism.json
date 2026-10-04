@@ -4,10 +4,10 @@
   "category": "finance_billing",
   "title": "False Start + Autopay Correction",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:18:15.764222",
-  "inference_time_s": 59.39,
-  "room_name": "eval-b2df871a",
-  "stream_start_time": 1791031704.1763868,
+  "evaluated_at": "2026-10-05T01:00:14.855772",
+  "inference_time_s": 70.11,
+  "room_name": "eval-c760ac9a",
+  "stream_start_time": 1791142231.507704,
   "input_transcript": "So, can you check the balance on my, actually never mind, never mind, forget that part. I really need to set the mortgage auto pay to pull from checking, no, no, actually on And second thought, savings is better. Make it pull from savings instead. Thank you very much.",
   "input_asr_chunks": [
     {
@@ -358,20 +358,20 @@
   "latency": {
     "input_duration_s": 49.98,
     "output_duration_s": 49.98,
-    "first_speech_s": 37.35
+    "first_speech_s": 34.55
   },
-  "user_done_unix": 1791031723.5363867,
+  "user_done_unix": 1791142250.867704,
   "search_latency_breakdown": {
-    "room": "eval-b2df871a",
+    "room": "eval-c760ac9a",
     "tool": "Search Tool",
-    "reasoning": 21.578,
-    "execution": 0.11,
-    "synthesis": 1.947,
-    "total": 23.635,
-    "agent_start_at": 1791031740.791223
+    "reasoning": 20.781,
+    "execution": 0.027,
+    "synthesis": 2.597,
+    "total": 23.405,
+    "agent_start_at": 1791142271.4633307
   },
-  "absolute_total_latency": 17.255,
-  "transcript": "Thank you for watching, and I'll see you in the next video. Your mortgage auto pay has been successfully updated to pull from your savings account.",
+  "absolute_total_latency": 20.596,
+  "transcript": "Thank you for watching, and I'll see you in the next video. I've updated your mortgage auto pay to pull from your savings account.",
   "asr_chunks": [
     {
       "text": "Thank",
@@ -458,101 +458,87 @@
       ]
     },
     {
-      "text": "Your",
+      "text": "I've",
       "timestamp": [
         30.0,
-        37.48
-      ]
-    },
-    {
-      "text": "mortgage",
-      "timestamp": [
-        37.48,
-        37.84
-      ]
-    },
-    {
-      "text": "auto",
-      "timestamp": [
-        37.84,
-        38.1
-      ]
-    },
-    {
-      "text": "pay",
-      "timestamp": [
-        38.1,
-        38.38
-      ]
-    },
-    {
-      "text": "has",
-      "timestamp": [
-        38.38,
-        38.56
-      ]
-    },
-    {
-      "text": "been",
-      "timestamp": [
-        38.56,
-        38.7
-      ]
-    },
-    {
-      "text": "successfully",
-      "timestamp": [
-        38.7,
-        39.0
+        34.78
       ]
     },
     {
       "text": "updated",
       "timestamp": [
-        39.0,
-        39.66
-      ]
-    },
-    {
-      "text": "to",
-      "timestamp": [
-        39.66,
-        39.94
-      ]
-    },
-    {
-      "text": "pull",
-      "timestamp": [
-        39.94,
-        40.12
-      ]
-    },
-    {
-      "text": "from",
-      "timestamp": [
-        40.12,
-        40.36
+        34.78,
+        35.12
       ]
     },
     {
       "text": "your",
       "timestamp": [
-        40.36,
-        40.44
+        35.12,
+        35.42
+      ]
+    },
+    {
+      "text": "mortgage",
+      "timestamp": [
+        35.42,
+        35.72
+      ]
+    },
+    {
+      "text": "auto",
+      "timestamp": [
+        35.72,
+        36.04
+      ]
+    },
+    {
+      "text": "pay",
+      "timestamp": [
+        36.04,
+        36.34
+      ]
+    },
+    {
+      "text": "to",
+      "timestamp": [
+        36.34,
+        36.54
+      ]
+    },
+    {
+      "text": "pull",
+      "timestamp": [
+        36.54,
+        36.76
+      ]
+    },
+    {
+      "text": "from",
+      "timestamp": [
+        36.76,
+        37.02
+      ]
+    },
+    {
+      "text": "your",
+      "timestamp": [
+        37.02,
+        37.12
       ]
     },
     {
       "text": "savings",
       "timestamp": [
-        40.44,
-        40.64
+        37.12,
+        37.36
       ]
     },
     {
       "text": "account.",
       "timestamp": [
-        40.64,
-        41.48
+        37.36,
+        38.24
       ]
     }
   ],
@@ -565,8 +551,8 @@
         "bill_type": "mortgage",
         "source_account": "savings"
       },
-      "timestamp_start": 34.56,
-      "timestamp_end": 34.67
+      "timestamp_start": 37.33,
+      "timestamp_end": 37.36
     }
   ],
   "status": "completed"

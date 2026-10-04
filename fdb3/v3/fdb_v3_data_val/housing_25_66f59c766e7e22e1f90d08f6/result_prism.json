@@ -4,10 +4,10 @@
   "category": "housing_location",
   "title": "Full Chain: Filters + Search + Correction",
   "provider": "prism",
-  "evaluated_at": "2026-10-03T18:08:22.648602",
-  "inference_time_s": 64.27,
-  "room_name": "eval-95045011",
-  "stream_start_time": 1791031111.5549262,
+  "evaluated_at": "2026-10-05T01:06:06.007340",
+  "inference_time_s": 69.73,
+  "room_name": "eval-dcd4a9de",
+  "stream_start_time": 1791142578.7036765,
   "input_transcript": "You know, you know, all right, first set the filter so pets are allowed and set the max price to 3,000. Then search for places in San Francisco. Wait, actually change the max price to 3500 instead. San Francisco is expensive, so I need more room in the budget. Thank you very much for your time, and I will see you in the next video.",
   "input_asr_chunks": [
     {
@@ -477,198 +477,70 @@
   "latency": {
     "input_duration_s": 51.48,
     "output_duration_s": 51.48,
-    "first_speech_s": 46.7
+    "first_speech_s": 29.35
   },
-  "user_done_unix": 1791031131.614926,
-  "search_latency_breakdown": {
-    "room": "eval-95045011",
-    "tool": "Search Tool",
-    "reasoning": 33.683,
-    "execution": 0.378,
-    "synthesis": 1.435,
-    "total": 35.496,
-    "agent_start_at": 1791031159.2385457
-  },
-  "absolute_total_latency": 27.624,
-  "transcript": "Thank you for watching, and I'll see you in the next video. I have a bunch of different things that you're filming.",
+  "user_done_unix": 1791142598.7636764,
+  "transcript": "What Number of bedrooms are you looking for?",
   "asr_chunks": [
     {
-      "text": "Thank",
+      "text": "What",
       "timestamp": [
         0.0,
-        27.64
+        25.78
       ]
     },
     {
-      "text": "you",
+      "text": "Number",
       "timestamp": [
-        27.64,
-        29.34
-      ]
-    },
-    {
-      "text": "for",
-      "timestamp": [
-        29.34,
-        29.34
-      ]
-    },
-    {
-      "text": "watching,",
-      "timestamp": [
-        29.34,
-        29.34
-      ]
-    },
-    {
-      "text": "and",
-      "timestamp": [
-        29.34,
-        29.36
-      ]
-    },
-    {
-      "text": "I'll",
-      "timestamp": [
-        29.36,
-        29.38
-      ]
-    },
-    {
-      "text": "see",
-      "timestamp": [
-        29.38,
-        29.38
-      ]
-    },
-    {
-      "text": "you",
-      "timestamp": [
-        29.38,
-        29.38
-      ]
-    },
-    {
-      "text": "in",
-      "timestamp": [
-        29.38,
-        29.38
-      ]
-    },
-    {
-      "text": "the",
-      "timestamp": [
-        29.38,
-        29.86
-      ]
-    },
-    {
-      "text": "next",
-      "timestamp": [
-        29.86,
-        29.88
-      ]
-    },
-    {
-      "text": "video.",
-      "timestamp": [
-        29.88,
-        29.9
-      ]
-    },
-    {
-      "text": "I",
-      "timestamp": [
-        30.0,
-        39.08
-      ]
-    },
-    {
-      "text": "have",
-      "timestamp": [
-        39.08,
-        47.0
-      ]
-    },
-    {
-      "text": "a",
-      "timestamp": [
-        47.0,
-        47.28
-      ]
-    },
-    {
-      "text": "bunch",
-      "timestamp": [
-        47.28,
-        47.94
+        29.6,
+        29.82
       ]
     },
     {
       "text": "of",
       "timestamp": [
-        47.94,
-        49.5
+        29.82,
+        29.96
       ]
     },
     {
-      "text": "different",
+      "text": "bedrooms",
       "timestamp": [
-        49.5,
-        49.5
+        29.96,
+        30.14
       ]
     },
     {
-      "text": "things",
+      "text": "are",
       "timestamp": [
-        49.5,
-        49.58
+        30.14,
+        30.52
       ]
     },
     {
-      "text": "that",
+      "text": "you",
       "timestamp": [
-        49.58,
-        50.98
+        30.52,
+        30.66
       ]
     },
     {
-      "text": "you're",
+      "text": "looking",
       "timestamp": [
-        50.98,
-        51.26
+        30.66,
+        30.84
       ]
     },
     {
-      "text": "filming.",
+      "text": "for?",
       "timestamp": [
-        51.26,
-        51.46
+        30.84,
+        33.44
       ]
     }
   ],
   "perceived_total_latency": -20.06,
   "audio_agent_speech_start": 0.0,
-  "actual_tool_calls": [
-    {
-      "function": "update_search_filter",
-      "args": {
-        "filter_name": "pets_allowed",
-        "value": true
-      },
-      "timestamp_start": 37.27,
-      "timestamp_end": 37.39
-    },
-    {
-      "function": "search_apartments",
-      "args": {
-        "city": "San Francisco",
-        "bedrooms": 1,
-        "max_price": 3500.0
-      },
-      "timestamp_start": 45.87,
-      "timestamp_end": 46.25
-    }
-  ],
+  "actual_tool_calls": [],
   "status": "completed"
 }
