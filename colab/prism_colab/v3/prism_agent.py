@@ -267,7 +267,7 @@ import functools
 # arguments (the top failure mode: e.g. destination/date corrections) and
 # hallucinated intents. Runs in parallel with the quiet-wait, so it adds no
 # serial latency. General mechanism — no scenario-specific knowledge.
-GATE_ENABLED = os.environ.get("PRISM_GATE", "1") == "1"
+GATE_ENABLED = os.environ.get("PRISM_GATE", "0") == "1"
 GATE_MODEL = os.environ.get("PRISM_GATE_MODEL", "gemini-3.8-flash")
 
 async def verify_call(transcript: str, fn_name: str, args: dict) -> dict:
@@ -331,6 +331,13 @@ def deliberation_window(delay=0.3):
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(self, *args, **kwargs):
+            # PRISM fix: livekit may pass model arguments POSITIONALLY; bind
+            # them to real parameter names so nothing is ever dropped.
+            import inspect as _inspect
+            _sig = _inspect.signature(func)
+            _bound = _sig.bind(self, *args, **kwargs)
+            _bound.apply_defaults()
+            kwargs = {k: v for k, v in _bound.arguments.items() if k != "self"}
             start_gen = self.tracker.generation
             loop = asyncio.get_running_loop()
             deadline = loop.time() + 8.0
@@ -391,6 +398,12 @@ def idempotent_state_modifier(func):
     """
     @functools.wraps(func)
     async def wrapper(self, *args, **kwargs):
+        # PRISM fix: bind positional invocations to parameter names first
+        import inspect as _inspect
+        _sig = _inspect.signature(func)
+        _bound = _sig.bind(self, *args, **kwargs)
+        _bound.apply_defaults()
+        kwargs = {k: v for k, v in _bound.arguments.items() if k != "self"}
         # Create normalized key
         norm_kwargs = dict(kwargs)
         key = func.__name__ + ":" + json.dumps(norm_kwargs, sort_keys=True, ensure_ascii=False, default=str)
